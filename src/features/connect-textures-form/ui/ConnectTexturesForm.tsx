@@ -79,14 +79,8 @@ export function ConnectTexturesForm({
       cloaksUrl: 'https://api.aurora-launcher.ru/mojang/username/cape/{userName}',
     },
     {
-      key: 'tlauncher',
-      label: 'TLauncher',
-      skinsUrl: 'https://tlauncher.org/upload/all/nickname/{userName}.png',
-      cloaksUrl: 'https://tlauncher.org/upload/all/cloaks/{userName}.png',
-    },
-    {
       key: 'tmonitoring',
-      label: 'T-Мониторинг',
+      label: 'T-Monitoring',
       skinsUrl: 'https://tmonitoring.com/uploads/catalog/skins/nickname/{userName}.png',
       cloaksUrl: 'https://tmonitoring.com/uploads/catalog/capes/{userName}.png',
     },
@@ -103,8 +97,8 @@ export function ConnectTexturesForm({
         <form className="flex flex-col space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <Tabs defaultValue="custom" className="w-full">
             <TabsList className="grid grid-cols-2 mb-4">
-              <TabsTrigger value="presets">Готовые настройки</TabsTrigger>
-              <TabsTrigger value="custom">Ручная настройка</TabsTrigger>
+              <TabsTrigger value="presets">Ready-made settings</TabsTrigger>
+              <TabsTrigger value="custom">Manual settings</TabsTrigger>
             </TabsList>
 
             <TabsContent value="presets" className="space-y-4">
@@ -128,20 +122,20 @@ export function ConnectTexturesForm({
                           }}
                         >
                           <CheckIcon className="h-4 w-4" />
-                          <span className="sr-only">Выбрать</span>
+                          <span className="sr-only">Select</span>
                         </Button>
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pb-3 text-xs text-muted-foreground">
                       <div className="flex flex-col gap-1">
                         <div className="flex items-center">
-                          <span className="font-medium mr-1">Скины:</span>
+                          <span className="font-medium mr-1">Skins:</span>
                           <code className="text-xs bg-muted px-1 py-0.5 rounded">
                             {service.skinsUrl}
                           </code>
                         </div>
                         <div className="flex items-center">
-                          <span className="font-medium mr-1">Плащи:</span>
+                          <span className="font-medium mr-1">Capes:</span>
                           <code className="text-xs bg-muted px-1 py-0.5 rounded">
                             {service.cloaksUrl}
                           </code>
@@ -156,8 +150,8 @@ export function ConnectTexturesForm({
             <TabsContent value="custom" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Настройка URL-адресов</CardTitle>
-                  <CardDescription>Укажите URL-адреса для сервисов скинов и плащей</CardDescription>
+                  <CardTitle>Customizing URLs</CardTitle>
+                  <CardDescription>Specify URLs for skin and cloak services</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <Controller
@@ -165,10 +159,10 @@ export function ConnectTexturesForm({
                     name="url_skins"
                     render={({ field }) => (
                       <FormItem className="flex-1">
-                        <FormLabel>URL сервиса скинов</FormLabel>
+                        <FormLabel>URL of the skin service</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <Input placeholder="Введите URL к сервису скинов" {...field} />
+                            <Input placeholder="Enter the URL to the skin service" {...field} />
                           </div>
                         </FormControl>
                         {form.formState.errors.url_skins && (
@@ -183,10 +177,10 @@ export function ConnectTexturesForm({
                     name="url_cloaks"
                     render={({ field }) => (
                       <FormItem className="flex-1">
-                        <FormLabel>URL сервиса плащей</FormLabel>
+                        <FormLabel>URL of the cloak service</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <Input placeholder="Введите URL к сервису плащей" {...field} />
+                            <Input placeholder="Enter the URL to the cape service" {...field} />
                           </div>
                         </FormControl>
                         {form.formState.errors.url_cloaks && (
@@ -203,14 +197,14 @@ export function ConnectTexturesForm({
                 className="border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950"
               >
                 <InfoIcon className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                <AlertTitle>Доступные переменные</AlertTitle>
+                <AlertTitle>Available variables</AlertTitle>
                 <AlertDescription className="mt-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     <div className="flex items-center gap-2 bg-white dark:bg-gray-800 p-2 rounded-md border border-gray-200 dark:border-gray-700">
                       <code className="text-sm font-bold text-blue-600 dark:text-blue-400">
                         {'{userName}'}
                       </code>
-                      <span className="text-sm">Ник пользователя</span>
+                      <span className="text-sm">User nickname</span>
                       <Button
                         type="button"
                         variant="ghost"
@@ -221,14 +215,14 @@ export function ConnectTexturesForm({
                         }}
                       >
                         <CopyIcon className="h-3 w-3" />
-                        <span className="sr-only">Копировать</span>
+                        <span className="sr-only">Copy</span>
                       </Button>
                     </div>
                     <div className="flex items-center gap-2 bg-white dark:bg-gray-800 p-2 rounded-md border border-gray-200 dark:border-gray-700">
                       <code className="text-sm font-bold text-blue-600 dark:text-blue-400">
                         {'{userUuid}'}
                       </code>
-                      <span className="text-sm">UUID пользователя</span>
+                      <span className="text-sm">User UUID</span>
                       <Button
                         type="button"
                         variant="ghost"
@@ -239,7 +233,7 @@ export function ConnectTexturesForm({
                         }}
                       >
                         <CopyIcon className="h-3 w-3" />
-                        <span className="sr-only">Копировать</span>
+                        <span className="sr-only">Copy</span>
                       </Button>
                     </div>
                   </div>
@@ -251,7 +245,7 @@ export function ConnectTexturesForm({
           <div className="flex justify-end items-center pt-4 border-t">
             <Button type="submit" className="w-fit" disabled={isPending || !form.formState.isDirty}>
               {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Сохранить
+              Save
             </Button>
           </div>
         </form>

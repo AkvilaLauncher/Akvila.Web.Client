@@ -28,8 +28,8 @@ export const NotificationPage = () => {
   return (
     <>
       <Breadcrumbs
-        current={'Уведомления'}
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        current={'Notifications'}
+        breadcrumbs={[{ value: 'Home', path: DASHBOARD_PAGES.HOME }]}
       />
       <Tabs
         className="flex gap-6 items-start"
@@ -41,33 +41,33 @@ export const NotificationPage = () => {
           defaultValue="fatal"
           className="sticky top-5 flex-col h-auto items-start min-w-64"
         >
-          <h3 className="p-2 pb-1 text-sm font-bold">Логи</h3>
+          <h3 className="p-2 pb-1 text-sm font-bold">Logs</h3>
           <TabsTrigger
             className="flex justify-between items-center gap-x-2 w-full h-10"
             value="fatal"
           >
-            <span>Фатальные</span>
+            <span>Fatal</span>
             <Badge variant="secondary">{notificationsFatal && notificationsFatal.length}</Badge>
           </TabsTrigger>
           <TabsTrigger
             className="flex justify-between items-center gap-x-2 w-full h-10"
             value="error"
           >
-            <span>Ошибки</span>
+            <span>Errors</span>
             <Badge variant="secondary">{notificationsError && notificationsError.length}</Badge>
           </TabsTrigger>
           <TabsTrigger
             className="flex justify-between items-center gap-x-2 w-full h-10"
             value="warning"
           >
-            <span>Предупреждения</span>
+            <span>Warnings</span>
             <Badge variant="secondary">{notificationsWarning && notificationsWarning.length}</Badge>
           </TabsTrigger>
           <TabsTrigger
             className="flex justify-between items-center gap-x-2 w-full h-10"
             value="information"
           >
-            <span>Информационные</span>
+            <span>Info</span>
             <Badge variant="secondary">
               {notificationsInformation && notificationsInformation.length}
             </Badge>
@@ -76,22 +76,22 @@ export const NotificationPage = () => {
             className="flex justify-between items-center gap-x-2 w-full h-10"
             value="debug"
           >
-            <span>Дебаг</span>
+            <span>Debug</span>
             <Badge variant="secondary">{notificationsDebug && notificationsDebug.length}</Badge>
           </TabsTrigger>
           <TabsTrigger
             className="flex justify-between items-center gap-x-2 w-full h-10"
             value="trace"
           >
-            <span>Трейс</span>
+            <span>Trace</span>
             <Badge variant="secondary">{notificationsTrace && notificationsTrace.length}</Badge>
           </TabsTrigger>
-          <ClearNotificationModel className="w-full" description="Очистить все" />
+          <ClearNotificationModel className="w-full" description="Clear all" />
         </TabsList>
         <TabsContent value="fatal" className="w-full">
           {notificationsFatal && !notificationsFatal.length && (
             <section className="flex flex-col justify-center items-center gap-y-2 bg-muted/80 min-h-[300px] rounded-md">
-              <h3 className="text-xl font-bold">Ошибки типа: Fatal не найдены</h3>
+              <h3 className="text-xl font-bold">Errors like: Fatal not found</h3>
             </section>
           )}
 
@@ -106,7 +106,7 @@ export const NotificationPage = () => {
         <TabsContent value="error" className="w-full">
           {notificationsError && !notificationsError.length && (
             <section className="flex flex-col justify-center items-center gap-y-2 bg-muted/80 min-h-[300px] rounded-md">
-              <h3 className="text-xl font-bold">Ошибки типа: Error не найдены</h3>
+              <h3 className="text-xl font-bold">Errors like: Error not found</h3>
             </section>
           )}
 
@@ -121,7 +121,7 @@ export const NotificationPage = () => {
         <TabsContent value="warning" className="w-full">
           {notificationsWarning && !notificationsWarning.length && (
             <section className="flex flex-col justify-center items-center gap-y-2 bg-muted/80 min-h-[300px] rounded-md">
-              <h3 className="text-xl font-bold">Ошибки типа: Warning не найдены</h3>
+              <h3 className="text-xl font-bold">Errors like: Warning not found</h3>
             </section>
           )}
 
@@ -136,7 +136,7 @@ export const NotificationPage = () => {
         <TabsContent value="information" className="w-full">
           {notificationsInformation && !notificationsInformation.length && (
             <section className="flex flex-col justify-center items-center gap-y-2 bg-muted/80 min-h-[300px] rounded-md">
-              <h3 className="text-xl font-bold">Ошибки типа: Information не найдены</h3>
+              <h3 className="text-xl font-bold">Errors like: Information not found</h3>
             </section>
           )}
 
@@ -151,7 +151,7 @@ export const NotificationPage = () => {
         <TabsContent value="debug" className="w-full">
           {notificationsDebug && !notificationsDebug.length && (
             <section className="flex flex-col justify-center items-center gap-y-2 bg-muted/80 min-h-[300px] rounded-md">
-              <h3 className="text-xl font-bold">Ошибки типа: Debug не найдены</h3>
+              <h3 className="text-xl font-bold">Errors like: Debug not found</h3>
             </section>
           )}
 
@@ -166,7 +166,7 @@ export const NotificationPage = () => {
         <TabsContent value="trace" className="w-full">
           {notificationsTrace && !notificationsTrace.length && (
             <section className="flex flex-col justify-center items-center gap-y-2 bg-muted/80 min-h-[300px] rounded-md">
-              <h3 className="text-xl font-bold">Ошибки типа: Trace не найдены</h3>
+              <h3 className="text-xl font-bold">Errors like: Trace not found</h3>
             </section>
           )}
 

@@ -37,7 +37,7 @@ export function ConnectTexturesDialog() {
           disabled={isLoadingSkins || isLoadingCloaks}
         >
           <WallpaperIcon className="mr-2" size={16} />
-          Настроить
+          Customize
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px] max-h-[calc(100vh-theme(spacing.16))] overflow-auto">
@@ -46,10 +46,10 @@ export function ConnectTexturesDialog() {
             <div className="rounded-full bg-blue-100 p-2 dark:bg-blue-900">
               <WallpaperIcon className="h-5 w-5 text-blue-600 dark:text-blue-300" />
             </div>
-            <DialogTitle className="text-xl">Подключение сервиса скинов и плащей</DialogTitle>
+            <DialogTitle className="text-xl">Connection of skins and cloaks service</DialogTitle>
           </div>
           <DialogDescription className="text-muted-foreground">
-            Настройте интеграцию с сервисами скинов и плащей для вашего проекта
+            Set up integration with skin and cloak services for your project
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4">

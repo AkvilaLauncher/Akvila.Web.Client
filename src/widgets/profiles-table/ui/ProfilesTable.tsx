@@ -86,17 +86,17 @@ export function ProfilesTable() {
       <Sheet open={isProfilesDrawerOpen} onOpenChange={onProfilesDrawerToggle}>
         <SheetContent>
           <SheetHeader>
-            <SheetTitle>Групповое действие над профилями</SheetTitle>
+            <SheetTitle>Group action on profiles</SheetTitle>
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg font-semibold">Удаление профилей</CardTitle>
+                <CardTitle className="text-lg font-semibold">Deleting profiles</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-y-4">
                 <CardDescription>
-                  Вы можете безвозвратно удалить профили, если они вам не нужны
+                  You can irrevocably delete profiles if you don&apos;t need them
                 </CardDescription>
                 <CardDescription>
-                  Безвозвратно будут удалены: {Object.keys(rowSelection).join(', ')}
+                  Will be irrevocably deleted: {Object.keys(rowSelection).join(', ')}
                 </CardDescription>
                 <div className="flex items-center space-x-2">
                   <Switch
@@ -104,7 +104,7 @@ export function ProfilesTable() {
                     checked={isRemoveFilesSwitch}
                     onClick={onRemoveFilesSwitchToggle}
                   />
-                  <Label htmlFor="remove-files">Удалить файлы</Label>
+                  <Label htmlFor="remove-files">Delete files</Label>
                 </div>
                 <Button
                   variant="destructive"
@@ -118,7 +118,7 @@ export function ProfilesTable() {
                   {deleteAllMutation.isPending && (
                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                   )}
-                  Удалить профили
+                  Delete profiles
                 </Button>
               </CardContent>
             </Card>
@@ -129,9 +129,9 @@ export function ProfilesTable() {
       <AlertDialog open={isProfileDeleteModalOpen} onOpenChange={onProfileDeleteModalToggle}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Удаление профиля</AlertDialogTitle>
+            <AlertDialogTitle>Deleting a profile</AlertDialogTitle>
             <AlertDialogDescription>
-              {`Вы уверены что хотите безвозвратно удалить профиль "${currentProfile?.name}"?`}
+              {`Are you sure you want to permanently delete the profile "${currentProfile?.name}"?`}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex items-center space-x-2">
@@ -140,17 +140,17 @@ export function ProfilesTable() {
               checked={isRemoveFilesSwitch}
               onClick={onRemoveFilesSwitchToggle}
             />
-            <Label htmlFor="remove-files">Удалить файлы</Label>
+            <Label htmlFor="remove-files">Delete files</Label>
           </div>
           <AlertDialogFooter>
-            <AlertDialogCancel>Отмена</AlertDialogCancel>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={onProfileDelete({
                 profileName: currentProfile?.name || '',
                 removeFiles: isRemoveFilesSwitch,
               })}
             >
-              Удалить
+              Delete
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

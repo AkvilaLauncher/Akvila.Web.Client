@@ -75,12 +75,12 @@ export const CreateWhiteUserDialog = ({ profile, playersState }: AddGameServerDi
       <DialogTrigger asChild>
         <Button className="w-fit gap-2">
           <PlusIcon width={16} height={16} />
-          Добавить пользователя
+          Add user
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Добавление игрока в белый список</DialogTitle>
+          <DialogTitle>Adding a player to the whitelist</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={onSubmit}>
@@ -96,20 +96,20 @@ export const CreateWhiteUserDialog = ({ profile, playersState }: AddGameServerDi
                     >
                       {valueComboBox
                         ? players.find((player) => player.uuid === valueComboBox)?.name
-                        : 'Выберите игрока...'}
+                        : 'Select a player...'}
                       <ChevronsUpDownIcon className="opacity-50" />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-[200px] p-0">
                     <Input
                       className="mb-4"
-                      placeholder={`Начните искать...`}
+                      placeholder={`Start searching...`}
                       type="text"
                       onChange={(value) => handleSearchInput(value.target.value)}
                     />
                     <Command>
                       <CommandList>
-                        <CommandEmpty>Игроки не найдены. {players.length}</CommandEmpty>
+                        <CommandEmpty>No players found.</CommandEmpty>
                         <CommandGroup>
                           {players.map((player) => (
                             <CommandItem

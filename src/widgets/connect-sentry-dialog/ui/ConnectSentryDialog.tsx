@@ -21,7 +21,7 @@ export function ConnectSentryDialog() {
 
   const { data: sentry, isLoading } = useSentry();
 
-  const connectionText = Boolean(sentry?.url) ? 'Изменить' : 'Подключить';
+  const connectionText = Boolean(sentry?.url) ? 'Modify' : 'Connect';
   const connectionIcon = Boolean(sentry?.url) ? (
     <PencilIcon className="mr-2" size={16} />
   ) : (
@@ -42,10 +42,10 @@ export function ConnectSentryDialog() {
             <div className="rounded-full bg-red-100 p-2 dark:bg-red-900">
               <ActivityIcon className="h-5 w-5 text-red-600 dark:text-red-300" />
             </div>
-            <DialogTitle className="text-xl">Подключение Sentry</DialogTitle>
+            <DialogTitle className="text-xl">Connecting Sentry</DialogTitle>
           </div>
           <DialogDescription className="text-muted-foreground">
-            Настройте интеграцию с Sentry для отслеживания ошибок и производительности вашего приложения
+            Set up integration with Sentry to track bugs and performance of your application
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-x-8">

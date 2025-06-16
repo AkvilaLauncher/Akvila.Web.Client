@@ -29,7 +29,7 @@ export const AccountNavigation = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" size="icon" className="rounded-full">
           <CircleUser className="h-5 w-5" />
-          <span className="sr-only">Открыть меню пользователя</span>
+          <span className="sr-only">Open user menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-48">
@@ -40,7 +40,7 @@ export const AccountNavigation = () => {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={destroySession}>Выход</DropdownMenuItem>
+        <DropdownMenuItem onClick={destroySession}>Exit</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

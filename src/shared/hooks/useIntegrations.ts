@@ -92,7 +92,7 @@ export const useAddNewsProvider = () => {
     mutationFn: (data: TPostNewsIntegrationsRequest) =>
       integrationService.postNewsIntegration(data),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },
@@ -107,7 +107,7 @@ export const useDeleteNewsProvider = () => {
     mutationKey: integrationsKeys.newsDelete(),
     mutationFn: (type: NewsTypeEnum) => integrationService.deleteNewsProvider({ type }),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
     },
@@ -126,7 +126,7 @@ export const useEditIntegration = () => {
       integrationService.putAuthIntegrations(data),
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: integrationsKeys.auth() });
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },
@@ -169,7 +169,7 @@ export const useLauncherUpload = () => {
     mutationKey: integrationsKeys.launcherUpload(),
     mutationFn: (data: TPostLauncherUploadRequest) => integrationService.postLauncherUpload(data),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },
@@ -192,7 +192,7 @@ export const useEditSentry = () => {
     mutationKey: integrationsKeys.sentryEditing(),
     mutationFn: (data: TPutSentryConnectRequest) => integrationService.putSentryConnect(data),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },
@@ -225,7 +225,7 @@ export const useEditConnectTextures = () => {
         await queryClient.invalidateQueries({
           queryKey: integrationsKeys.texturesEditing(TexturesServiceType.TEXTURES_SERVICE_CLOAKS),
         });
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },
@@ -248,7 +248,7 @@ export const useEditDiscord = () => {
     mutationKey: integrationsKeys.discordEditing(),
     mutationFn: (data: TPutConnectDiscordRequest) => integrationService.putConnectDiscord(data),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },

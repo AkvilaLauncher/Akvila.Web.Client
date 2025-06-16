@@ -83,7 +83,7 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
             : `linear-gradient(rgba(255, 255, 255, .6), rgba(255, 255, 255, 1)), url(${profile.background})`,
       }}
     >
-      {/* Кнопка редактирования */}
+      {/* Edit button */}
       <div className={classes['profile-card__edit-button']}>
         <div className={classes['profile-card__info-state']}>
           <ClientState state={state || profile.state} />
@@ -92,19 +92,19 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
           <DialogTrigger asChild>
             <Button variant="outline" className={classes['profile-card__edit-button-full']}>
               <Edit2Icon size={14} />
-              Оформление
+              Edit Profile
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[625px]">
             <DialogHeader>
-              <DialogTitle>Изображения</DialogTitle>
-              <DialogDescription>Загрузите иконку и изображение профиля</DialogDescription>
+              <DialogTitle>Images</DialogTitle>
+              <DialogDescription>Upload your icon and profile picture</DialogDescription>
             </DialogHeader>
             <Separator className="my-20px" />
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className="grid gap-3">
-                  <h6 className="text-sm font-bold">Иконка</h6>
+                  <h6 className="text-sm font-bold">Icon</h6>
                   {form.watch('icon') && form.watch('icon')[0] ? (
                     <div className="mt-2">
                       <Image
@@ -122,7 +122,7 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
                     <FormMessage>{form.formState.errors.icon.message?.toString()}</FormMessage>
                   )}
 
-                  <h6 className="text-sm font-bold">Задний фон</h6>
+                  <h6 className="text-sm font-bold">Background</h6>
                   {form.watch('background') && form.watch('background')[0] ? (
                     <div className="mt-2">
                       <Image
@@ -148,7 +148,7 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
                     className="w-fit ml-auto"
                   >
                     {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-                    Сохранить
+                    Save
                   </Button>
                 </div>
               </form>
@@ -157,7 +157,7 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
         </Dialog>
       </div>
 
-      {/* Профиль */}
+      {/* Profile */}
       <div className={classes['profile-card__info']}>
         <div className={classes['profile-card__info-icon-wrapper']}>
           {profile.iconBase64 ? (
@@ -174,7 +174,7 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
             </div>
           )}
 
-          {/* Текст профиля */}
+          {/* Profile Text */}
           <div className={classes['profile-card__info-text']}>
             <h3 className={classes['profile-card__info-name']}>
               <TooltipProvider>
@@ -196,7 +196,7 @@ export const ProfileCard = ({ profile }: ProfileCardParams) => {
                 {profile.minecraftVersion}
               </span>
               <span className={classes['profile-card__info-version-launch']}>
-                / {profile.launchVersion ? profile.launchVersion : 'Профиль не загружен'}
+                / {profile.launchVersion ? profile.launchVersion : 'Profile not loaded'}
               </span>
             </p>
           </div>

@@ -1,6 +1,6 @@
 {
-  "name": "gml-frontend",
-  "version": "1.0.7",
+  "name": "akvila-frontend",
+  "version": "1.0.7-1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

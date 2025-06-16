@@ -46,7 +46,7 @@ export function DownloadClientForm({
             name="branch"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Выберите версию</FormLabel>
+                <FormLabel>Select a version</FormLabel>
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
@@ -54,7 +54,7 @@ export function DownloadClientForm({
                     disabled={field.disabled}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Выберите версию" />
+                      <SelectValue placeholder="Select a version" />
                     </SelectTrigger>
                     <SelectContent>
                       {branches &&
@@ -78,9 +78,9 @@ export function DownloadClientForm({
             name="host"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Введите URL к API</FormLabel>
+                <FormLabel>Enter URL to API</FormLabel>
                 <FormControl>
-                  <Input placeholder="Введите URL к API" {...field} />
+                  <Input placeholder="Enter URL to API" {...field} />
                 </FormControl>
                 {form.formState.errors.host && (
                   <FormMessage>{form.formState.errors.host.message}</FormMessage>
@@ -94,9 +94,9 @@ export function DownloadClientForm({
             name="folder"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Введите название папки</FormLabel>
+                <FormLabel>Enter a folder name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Введите название папки" {...field} />
+                  <Input placeholder="Enter a folder name" {...field} />
                 </FormControl>
                 {form.formState.errors.folder && (
                   <FormMessage>{form.formState.errors.folder.message}</FormMessage>
@@ -109,7 +109,7 @@ export function DownloadClientForm({
             {isDownload && (
               <div className="w-full flex flex-col gap-y-1">
                 <p className="text-gray-700 dark:text-gray-200 text-sm">
-                  Загрузка завершена на {percent}% из 100%
+                  Download completed at {percent}% of 100%
                 </p>
                 <Progress className="h-2" value={percent} />
               </div>
@@ -117,7 +117,7 @@ export function DownloadClientForm({
 
             <Button className="w-fit ml-auto" disabled={isDownload || !form.formState.isDirty}>
               {isDownload && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Скачать исходники
+              Download sources
             </Button>
           </div>
         </form>

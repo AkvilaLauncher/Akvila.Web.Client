@@ -19,7 +19,7 @@ export const useOnSubmit = ({ connectionHub, state, version }: UseOnSubmitBuildP
       state.setIsBuilding(() => true);
       connectionHub?.invoke('Compile', version, data.operatingSystem).then(() => {});
     } catch (error: unknown) {
-      toast.error('Ошибка', {
+      toast.error('Error', {
         description: JSON.stringify(error),
       });
     } finally {

@@ -71,60 +71,72 @@ export const GameModItem = ({ mod, profile, details }: GameModItemType) => {
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="border-l border-dashed ml-4">
                 <div className="flex items-center gap-2 mt-3">
-                  <div className="border-t border-dashed w-[20px] h-[1px]"></div>
-                  <h3 className="text-gray-700 dark:text-gray-300">Наименование</h3>
+                  <div className="border-t border-dashed w-[15px] h-[1px]"></div>
+                  <h3 className="text-gray-700 dark:text-gray-300">Name</h3>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-[20px] h-[1px]"></div>
-                  <Input
-                    className=" p-0 text-md text-black dark:text-white bg-transparent shadow-none border-none"
-                    style={{ boxShadow: 'none' }}
-                    type="text"
-                    defaultValue={details[`${mod?.name}.jar`]?.title}
-                    {...form.register('title')}
-                    placeholder="Введите наименование"
-                  />
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-2">
+                    <div className="w-[15px] h-[1px]"></div>
+                    <Input
+                      className="p-0 text-md text-black dark:text-white bg-transparent shadow-none border-none w-full"
+                      style={{ boxShadow: 'none' }}
+                      type="text"
+                      defaultValue={details[`${mod?.name}.jar`]?.title}
+                      {...form.register('title')}
+                      placeholder="Enter name"
+                    />
+                  </div>
                   {form.formState.errors.title && (
-                    <FormMessage>{form.formState.errors.title.message?.toString()}</FormMessage>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[15px] h-[1px]"></div>
+                      <FormMessage>{form.formState.errors.title.message?.toString()}</FormMessage>
+                    </div>
                   )}
                 </div>
                 <div className="flex items-center gap-2 mt-3">
-                  <div className="border-t border-dashed w-[20px] h-[1px]"></div>
-                  <h3 className="text-gray-700 dark:text-gray-300">Описание</h3>
+                  <div className="border-t border-dashed w-[15px] h-[1px]"></div>
+                  <h3 className="text-gray-700 dark:text-gray-300">Description</h3>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-[20px] h-[1px]"></div>
-                  <Textarea
-                    className="p-0 pt-2 text-md text-black dark:text-white bg-transparent shadow-none border-none"
-                    style={{ boxShadow: 'none' }}
-                    defaultValue={details[`${mod?.name}.jar`]?.description}
-                    {...form.register('description')}
-                    placeholder="Введите описание"
-                  />
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-2">
+                    <div className="w-[15px] h-[1px]"></div>
+                    <Textarea
+                      className="p-0 pt-2 text-md text-black dark:text-white bg-transparent shadow-none border-none w-full"
+                      style={{ boxShadow: 'none' }}
+                      defaultValue={details[`${mod?.name}.jar`]?.description}
+                      {...form.register('description')}
+                      placeholder="Enter description"
+                    />
+                  </div>
                   {form.formState.errors.description && (
-                    <FormMessage>
-                      {form.formState.errors.description.message?.toString()}
-                    </FormMessage>
+                    <div className="flex items-center gap-2">
+                      <div className="w-[15px] h-[1px]"></div>
+                      <FormMessage>
+                        {form.formState.errors.description.message?.toString()}
+                      </FormMessage>
+                    </div>
                   )}
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-[10px] h-[1px]"></div>
+                <div className="flex items-center gap-2 mt-3">
+                  <div className="w-[15px] h-[1px]"></div>
                   <Button
                     variant="link"
                     disabled={form.formState.disabled || !form.formState.isDirty}
                   >
-                    Сохранить
+                    Save
+                  </Button>
+                  <Button
+                    variant="destructive"
+                    type="button"
+                    onClick={() => removeMod(`${mod?.name}.jar`)}
+                  >
+                    Delete
                   </Button>
                 </div>
               </div>
             </form>
           </Form>
         </div>
-      </TableCell>
-      <TableCell>
-        <Button variant="link" onClick={() => removeMod(`${mod?.name}.jar`)}>
-          Удалить
-        </Button>
       </TableCell>
     </>
   );

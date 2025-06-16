@@ -3,31 +3,31 @@ import { z } from 'zod';
 export const signInSchema = z.object({
   login: z
     .string()
-    .min(1, { message: 'Вы не заполнили поле' })
+    .min(1, { message: "You haven't filled in the field" })
     .transform((v) => v.trim()),
-  password: z.string().min(1, { message: 'Вы не заполнили поле' }),
+  password: z.string().min(1, { message: "You haven't filled in the field" }),
 });
 
 export const signUpSchema = z
   .object({
     login: z
       .string()
-      .min(3, { message: 'Имя пользователя слишком короткое' })
-      .max(50, { message: 'Имя пользователя слишком длинное' })
+      .min(3, { message: 'Username is too short' })
+      .max(50, { message: 'Username is too long' })
       .transform((v) => v.trim()),
-    email: z.string().email({ message: 'Некорректный email' }),
+    email: z.string().email({ message: 'Invalid email' }),
     password: z
       .string()
-      .min(6, { message: 'Пароль слишком короткий' })
-      .regex(/\d/, { message: 'Пароль должен содержать хотя бы одну цифру' })
+      .min(8, { message: 'Password is too short' })
+      .regex(/\d/, { message: 'The password must contain at least one digit' })
       .regex(/[A-Z]/, {
-        message: 'Пароль должен содержать хотя бы одну заглавную букву.',
+        message: 'The password must contain at least one capital letter.',
       }),
-    confirmPassword: z.string().min(6, { message: 'Повторите пароль' }),
+    confirmPassword: z.string().min(8, { message: 'Repeat password' }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
-    message: 'Введенные пароли не совпадают',
+    message: 'The entered passwords do not match',
   });
 
 export type SignInFormSchemaType = z.infer<typeof signInSchema>;

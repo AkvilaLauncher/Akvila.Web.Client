@@ -33,14 +33,12 @@ export function AddingAnyFilesForm({ profile }: { profile: string }) {
   return (
     <Card className="shadow-sm">
       <CardHeader className="pb-3">
-        <CardTitle className="text-xl">Добавление своего файла в белый список</CardTitle>
-        <CardDescription>
-          Укажите путь к файлу, который вы хотите добавить в белый список
-        </CardDescription>
+        <CardTitle className="text-xl">Adding your file to the whitelist</CardTitle>
+        <CardDescription>Adding your file to the whitelist</CardDescription>
       </CardHeader>
       <CardContent>
         <FormItem className="space-y-2">
-          <FormLabel className="text-sm font-medium">Наименование файла</FormLabel>
+          <FormLabel className="text-sm font-medium">File name</FormLabel>
           <div className="flex items-center gap-3">
             <div className="relative flex-1">
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -48,7 +46,7 @@ export function AddingAnyFilesForm({ profile }: { profile: string }) {
               </div>
               <FormControl>
                 <Input
-                  placeholder="Введите абсолютный путь"
+                  placeholder="Enter absolute path"
                   value={value || ''}
                   onChange={(event) => onChangeValue(event.target.value)}
                   className="pl-9 focus-visible:ring-2 focus-visible:ring-primary/20"
@@ -61,11 +59,11 @@ export function AddingAnyFilesForm({ profile }: { profile: string }) {
               disabled={!value?.trim()}
             >
               <PlusIcon className="h-4 w-4" />
-              Добавить
+              Add
             </Button>
           </div>
           <FormDescription className="mt-3 p-3 bg-muted/50 rounded-md border text-sm">
-            Будет исключен файл:{' '}
+            The file will be excluded:{' '}
             <span className="font-medium text-primary block mt-1 break-all">
               {value ? `C:/Users/test/AppData/Roaming/launcher/clients/${profile}/${value}` : '—'}
             </span>

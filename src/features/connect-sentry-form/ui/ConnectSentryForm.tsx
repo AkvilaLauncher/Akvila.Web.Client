@@ -64,7 +64,7 @@ export function ConnectSentryForm({ className, onOpenChange, ...props }: SignInF
       <Form {...form}>
         <form className="flex flex-col space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem>
-            <FormLabel className="text-sm font-medium">Введите эндпоинт</FormLabel>
+            <FormLabel className="text-sm font-medium">Enter endpoint</FormLabel>
             <FormControl>
               <Input
                 placeholder="https://xxxxx@sentry.io/xxxxx"
@@ -73,7 +73,7 @@ export function ConnectSentryForm({ className, onOpenChange, ...props }: SignInF
               />
             </FormControl>
             <p className="text-xs text-muted-foreground mt-1">
-              Укажите DSN URL вашего проекта Sentry для отслеживания ошибок
+              Specify the DSN URL of your Sentry project to track errors
             </p>
             {form.formState.errors.url && (
               <FormMessage>{form.formState.errors.url.message}</FormMessage>
@@ -85,7 +85,7 @@ export function ConnectSentryForm({ className, onOpenChange, ...props }: SignInF
               <CardContent className="p-4">
                 <div className="flex items-center gap-2">
                   <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Информация о протоколе:</span>
+                  <span className="text-sm text-muted-foreground">Protocol information:</span>
                 </div>
                 <div className="mt-2 flex items-center gap-2">
                   <Badge
@@ -100,7 +100,7 @@ export function ConnectSentryForm({ className, onOpenChange, ...props }: SignInF
                     {protocolInfo.protocol}
                   </Badge>
                   <span className="text-sm">
-                    {protocolInfo.secure ? 'Безопасное соединение' : 'Небезопасное соединение'}
+                    {protocolInfo.secure ? 'Secure connection' : 'Unsecure connection'}
                   </span>
                 </div>
               </CardContent>
@@ -115,7 +115,7 @@ export function ConnectSentryForm({ className, onOpenChange, ...props }: SignInF
               disabled={isPending || !form.formState.isDirty}
             >
               {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Сохранить
+              Save
             </Button>
           </div>
         </form>

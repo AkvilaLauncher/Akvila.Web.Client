@@ -1,7 +1,7 @@
 import { PlayerBaseEntity, UserBaseEntity } from '@/shared/api/contracts';
 import { ResponseBaseEntity } from '@/shared/api/schemas';
 
-// Регистрация
+// Registration
 export type TPostSignUpRequest = {
   login: string;
   password: string;
@@ -13,7 +13,7 @@ export type TPostSignUpResponse = ResponseBaseEntity & {
   };
 };
 
-// Авторизация
+// Authorization
 export type TPostSignInRequest = {
   login: string;
   password: string;
@@ -24,7 +24,7 @@ export type TPostSignInResponse = ResponseBaseEntity & {
   };
 };
 
-// Игроки
+// Players
 export type TGetPlayersRequest = {
   take: number;
   offset: number;
@@ -34,10 +34,10 @@ export type TGetPlayersResponse = ResponseBaseEntity & {
   data: PlayerBaseEntity[];
 };
 
-// Бан юзера
+// User Ban
 export type TPostBanPlayersRequest = string[];
 export type TPostBanPlayersResponse = ResponseBaseEntity & {};
 
-// Удаление юзера
+// User Delete
 export type TPostRemovePlayersRequest = string[];
 export type TPostRemovePlayersResponse = ResponseBaseEntity & {};

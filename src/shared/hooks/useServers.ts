@@ -39,8 +39,8 @@ export const useCreateGameServer = () => {
         queryKey: serversKeys.entities(),
       });
 
-      toast.success('Успешно', {
-        description: `Сервер "${data.data.name}" успешно добавлен`,
+      toast.success('Successful', {
+        description: `Server "${data.data.name}" was successfully added`,
       });
     },
     onError: (error) => {
@@ -60,8 +60,8 @@ export const useDeleteGameServer = () => {
         queryKey: serversKeys.entities(),
       });
 
-      toast.success('Успешно', {
-        description: 'Сервер успешно удален',
+      toast.success('Successful', {
+        description: 'Server successfully deleted',
       });
     },
     onError: (error) => {

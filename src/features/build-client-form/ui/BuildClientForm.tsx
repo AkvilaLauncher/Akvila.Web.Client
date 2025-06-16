@@ -93,7 +93,7 @@ export function BuildClientForm({
             name="version"
             render={({ field }) => (
               <FormItem className="space-y-2 flex-1">
-                <FormLabel>Выберите версию</FormLabel>
+                <FormLabel>Select a version</FormLabel>
                 <FormControl>
                   <Popover>
                     <PopoverTrigger asChild>
@@ -110,15 +110,15 @@ export function BuildClientForm({
                             ? versionsOptions &&
                               versionsOptions.find((version) => version.value === field.value)
                                 ?.label
-                            : 'Выберите версию'}
+                            : 'Select a version'}
                           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
                     <PopoverContent align="start" className="w-full p-0">
                       <Command>
-                        <CommandInput placeholder="Поиск..." />
-                        <CommandEmpty>Версия не найдена</CommandEmpty>
+                        <CommandInput placeholder="Search..." />
+                        <CommandEmpty>Version not found</CommandEmpty>
                         <CommandGroup>
                           <CommandList>
                             {versionsOptions.map((option) => (
@@ -156,13 +156,13 @@ export function BuildClientForm({
             name="operatingSystem"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Выберите операционную систему</FormLabel>
+                <FormLabel>Select the operating system</FormLabel>
                 <FormControl>
                   <MultiSelect
                     options={platformsOptions}
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    placeholder="Выберите операционную систему"
+                    placeholder="Select the operating system"
                     variant="inverted"
                     maxCount={3}
                   />
@@ -176,7 +176,7 @@ export function BuildClientForm({
           <div className="flex gap-x-4 justify-end items-center">
             <Button className="w-fit" disabled={isBuilding || !form.formState.isDirty}>
               {isBuilding && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Собрать
+              Compile
             </Button>
           </div>
         </form>

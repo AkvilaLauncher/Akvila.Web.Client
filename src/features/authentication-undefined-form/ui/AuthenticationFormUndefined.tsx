@@ -34,14 +34,14 @@ export function AuthenticationFormUndefined({
     <div className={cn('grid gap-4', className)} {...props}>
       <Alert variant="destructive">
         <ExclamationTriangleIcon className="h-4 w-4" />
-        <AlertTitle>Внимание!</AlertTitle>
+        <AlertTitle>Warning!</AlertTitle>
         <AlertDescription>
-          Данный метод <strong>запретит</strong> любую аутентификацию со стороны лаунчера
+          This method will <strong>disallow</strong> any authentication by the Launcher
         </AlertDescription>
       </Alert>
       <Button type="submit" className="w-fit ml-auto" disabled={isPending} onClick={onSubmit}>
         {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-        Сохранить
+        Save
       </Button>
     </div>
   );

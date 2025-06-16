@@ -16,13 +16,13 @@ export const SentryPage = () => {
     <>
       <Breadcrumbs
         current={'Sentry'}
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        breadcrumbs={[{ value: 'Home', path: DASHBOARD_PAGES.HOME }]}
       />
 
       <Tabs defaultValue="stats">
         <TabsList className="grid grid-cols-2 w-fit">
-          <TabsTrigger value="stats">Статистика</TabsTrigger>
-          <TabsTrigger value="details">Аналитика</TabsTrigger>
+          <TabsTrigger value="stats">Stats</TabsTrigger>
+          <TabsTrigger value="details">Analytics</TabsTrigger>
         </TabsList>
         <TabsContent value="stats">
           <SentryStats chartData={chartData!} summaryData={summaryData!} />

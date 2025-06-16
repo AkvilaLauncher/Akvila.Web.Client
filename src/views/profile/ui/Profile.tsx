@@ -99,9 +99,9 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
       <Breadcrumbs
         current={profile.profileName}
         breadcrumbs={[
-          { value: 'Главная', path: DASHBOARD_PAGES.HOME },
+          { value: 'Home', path: DASHBOARD_PAGES.HOME },
           {
-            value: 'Профили',
+            value: 'Profiles',
             path: DASHBOARD_PAGES.PROFILES,
           },
         ]}
@@ -123,44 +123,41 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
       >
         <TabsList className={classes.tabs__list}>
           <TabsTrigger className="w-full h-10" value="main">
-            Основные
+            General
           </TabsTrigger>
           <TabsTrigger className="w-full h-10" value="client">
-            Клиент
+            Client
           </TabsTrigger>
           <TabsTrigger className="w-full h-10" value="files">
-            Файлы
+            Files
           </TabsTrigger>
           <TabsTrigger className="w-full h-10" value="folders">
-            Папки
-          </TabsTrigger>
-          <TabsTrigger className="w-full h-10" value="servers">
-            Сервера
-          </TabsTrigger>
-          <TabsTrigger className="w-full h-10" value="players">
-            Игроки
+            Folders
           </TabsTrigger>
           <TabsTrigger className="w-full h-10" value="mods">
-            Моды
+            Mods
+          </TabsTrigger>
+          <TabsTrigger className="w-full h-10" value="servers">
+            Servers
+          </TabsTrigger>
+          <TabsTrigger className="w-full h-10" value="players">
+            Players
           </TabsTrigger>
         </TabsList>
         <TabsContent value="main" className={classes.tabs__content}>
-          <Section
-            title="Настройки профиля"
-            subtitle="Обновите фотографию профиля и подробную информацию здесь"
-          >
+          <Section title="Profile Settings" subtitle="Update your profile look and details here">
             <EditProfileForm profile={profile} />
           </Section>
         </TabsContent>
         <TabsContent value="client" className={classes.tabs__content}>
-          <Section title="Загрузка клиента" subtitle="Необходимо для генерации клиента Minecraft">
+          <Section title="Client Download" subtitle="Required for Minecraft client generation">
             <DownloadClientHub key="DownloadClientHub" profile={profile} />
           </Section>
         </TabsContent>
         <TabsContent value="files" className={classes.tabs__content}>
           <Section
-            title="Белый список файлов"
-            subtitle="Белый список необходим для того чтобы исключить выбранные файлы из автоматического удаления"
+            title="Files Whitelist"
+            subtitle="Whitelisting is necessary to exclude selected files from auto deletion"
           >
             <div className="hidden md:flex flex-col gap-3">
               <div className={classes.tabs__whitelist}>
@@ -172,18 +169,18 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
                 {!!Object.keys(rowSelection).length && (
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="outline">Удалить выбранные файлы</Button>
+                      <Button variant="destructive">Delete selected files</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Удаление файлов из белого списка</AlertDialogTitle>
+                        <AlertDialogTitle>Deleting files from the whitelist</AlertDialogTitle>
                         <AlertDialogDescription>
-                          {`Вы уверены что хотите удалить ${Object.keys(rowSelection).length} файлы(ов) из белого списка?`}
+                          {`Are you sure you want to remove ${Object.keys(rowSelection).length} files from the whitelist?`}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Отмена</AlertDialogCancel>
-                        <AlertDialogAction onClick={onSubmitDeleteFiles}>Удалить</AlertDialogAction>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction onClick={onSubmitDeleteFiles}>Delete</AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
@@ -201,9 +198,9 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
                 <div className="mb-4">
                   <Laptop2 />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold">Доступно только на компьютерах</h3>
+                <h3 className="mb-2 text-lg font-semibold">Available on computers only</h3>
                 <p className="text-sm text-muted-foreground">
-                  Пожалуйста, используйте десктопную версию для управления файлами
+                  Please use the desktop version to manage your files
                 </p>
               </div>
             </div>
@@ -211,8 +208,8 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
         </TabsContent>
         <TabsContent value="folders" className={classes.tabs__content}>
           <Section
-            title="Белый список папок"
-            subtitle="Белый список необходим для того чтобы исключить выбранные папки из автоматического удаления"
+            title="Folder Whitelist"
+            subtitle="Whitelisting is necessary to exclude selected folders from auto deletion"
           >
             <div className="hidden md:flex flex-col gap-3">
               <div className={classes.tabs__whitelist}>
@@ -220,19 +217,19 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
                 {!!Object.keys(rowSelection).length && (
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="outline">Удалить выбранные папки</Button>
+                      <Button variant="destructive">Delete selected folders</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Удаление папок из белого списка</AlertDialogTitle>
+                        <AlertDialogTitle>Remove folders from the whitelist</AlertDialogTitle>
                         <AlertDialogDescription>
-                          {`Вы уверены что хотите удалить ${Object.keys(rowSelection).length} папку(и) из белого списка?`}
+                          {`Are you sure you want to remove ${Object.keys(rowSelection).length} folders from the whitelist?`}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Отмена</AlertDialogCancel>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
                         <AlertDialogAction onClick={onSubmitDeleteFolders}>
-                          Удалить
+                          Delete
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
@@ -252,33 +249,33 @@ export const ProfilePage = ({ params }: { params: { name: string } }) => {
                 <div className="mb-4">
                   <Laptop2 />
                 </div>
-                <h3 className="mb-2 text-lg font-semibold">Доступно только на компьютерах</h3>
+                <h3 className="mb-2 text-lg font-semibold">Available on computers only</h3>
                 <p className="text-sm text-muted-foreground">
-                  Пожалуйста, используйте десктопную версию для управления файлами
+                  Please use the desktop version to manage your files
                 </p>
               </div>
             </div>
           </Section>
         </TabsContent>
+        <TabsContent value="mods" className={classes.tabs__content}>
+          <Section title="Mods" subtitle="Managing game mods">
+            <GameMods profile={profile} />
+          </Section>
+        </TabsContent>
         <TabsContent value="servers" className={classes.tabs__content}>
           <Section
-            title="Сервера"
-            subtitle="Добавление серверов, для вывода онлайна в лаунчере, можно использовать домены, srv записи и IP адреса"
+            title="Servers"
+            subtitle="Add servers, you can use domains, srv records and IP addresses to display online in launcher"
           >
             <GameServers profile={profile} />
           </Section>
         </TabsContent>
         <TabsContent value="players" className={classes.tabs__content}>
           <Section
-            title="Игроки"
-            subtitle="Управление игроками, которые могут заходить в игровой клиент, даже если он выключен или недоступен"
+            title="Players"
+            subtitle="Manage players who can log into the game client even if it is turned off or unavailable"
           >
             <GamePlayers profile={profile} />
-          </Section>
-        </TabsContent>
-        <TabsContent value="mods" className={classes.tabs__content}>
-          <Section title="Моды" subtitle="Управление игровыми модификациями">
-            <GameMods profile={profile} />
           </Section>
         </TabsContent>
       </Tabs>

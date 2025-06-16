@@ -4,7 +4,7 @@ export const integrationSchema = z.object({
   authType: z.number(),
   endpoint: z
     .string()
-    .min(1, { message: 'Вы не заполнили поле' })
+    .min(1, { message: "You haven't filled in the field" })
     .transform((v) => v.trim()),
 });
 

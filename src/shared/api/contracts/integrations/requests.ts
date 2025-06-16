@@ -11,106 +11,106 @@ import {
 } from '@/shared/api/contracts';
 import { TexturesServiceType } from '@/shared/enums';
 import { ResponseBaseEntity } from '@/shared/api/schemas';
-import { NewsTypeEnum } from '@/shared/enums/news-type'; // Получение списка серверов для авторизации
+import { NewsTypeEnum } from '@/shared/enums/news-type';
 
-// Получение списка серверов для авторизации
+// Getting the list of servers for authorization
 export type TGetAuthIntegrationsRequest = {};
 export type TGetAuthIntegrationsResponse = ResponseBaseEntity & {
   data: AuthIntegrationBaseEntity[];
 };
 
-// Получение активного сервиса авторизации
+// Obtaining an active authorization service
 export type TGetActiveAuthIntegrationsRequest = {};
 export type TGetActiveAuthIntegrationsResponse = ResponseBaseEntity & {
   data: AuthIntegrationBaseEntity;
 };
 
-// Получение новостных провайдеров
+// Getting news providers
 export type TGetNewsProvidersIntegrationsRequest = {};
 export type TGetNewsProvidersIntegrationsResponse = ResponseBaseEntity & {
   data: NewsIntegrationBaseEntity[];
 };
 
-// Получение списка новостей
+// Getting the list of news
 export type TGetNewsRequest = {};
 export type TGetNewsResponse = ResponseBaseEntity & {
   data: NewsEntity[];
 };
 
-// Удаление новостного провайдера
+// Removing a news provider
 export type TDeleteNewsProvidersIntegrationsRequest = {};
 export type TDeleteNewsProvidersIntegrationsResponse = ResponseBaseEntity & {
   data: NewsIntegrationBaseEntity[];
 };
 
-// Получение списка веток
+// Getting the list of branches
 export type TGetLauncherGithubVersionsRequest = {};
 export type TGetLauncherGithubVersionsResponse = ResponseBaseEntity & {
   data: BranchBaseEntity[];
 };
 
-// Получение списка платформ
+// Getting the list of platforms
 export type TGetLauncherBuildPlatformsRequest = {};
 export type TGetLauncherBuildPlatformsResponse = ResponseBaseEntity & {
   data: string[];
 };
 
-// Получение списка билдов лаунчера
+// Getting the list of builds for Launcher
 export type TGetLauncherBuildVersionsRequest = {};
 export type TGetLauncherBuildVersionsResponse = ResponseBaseEntity & {
   data: LauncherBuildsBaseEntity[];
 };
 
-// Получение актуальной версии лаунчера
+// Getting the latest version of the launcher
 export type TGetLauncherActualVersionRequest = {};
 export type TGetLauncherActualVersionResponse = ResponseBaseEntity & {
   data: LauncherActualVersionBaseEntity;
 };
 
-// Обновление лаунчера
+// Updating the Launcher
 export type TPostLauncherUploadRequest = FormData;
 export type TPostLauncherUploadResponse = ResponseBaseEntity & {};
 
-// Изменение сервера авторизации
+// Changing the authorization server
 export type TPostAuthIntegrationsRequest = {
   authType: number;
   endpoint: string;
 };
 export type TPostAuthIntegrationsResponse = ResponseBaseEntity & {};
 
-// Добавление новостного провайдера
+// Adding a news provider
 export type TPostNewsIntegrationsRequest = {
   url: string;
   type: NewsTypeEnum;
 };
 export type TPostNewsIntegrationsResponse = ResponseBaseEntity & {};
 
-// Получение активного сервиса авторизации
+// Obtaining an active authorization service
 export type TGetSentryConnectRequest = {};
 export type TGetSentryConnectResponse = ResponseBaseEntity & {
   data: SentryBaseEntity;
 };
 
-// Изменение сервера авторизации
+// Changing the authorization server
 export type TPutSentryConnectRequest = { url: string };
 export type TPutSentryConnectResponse = ResponseBaseEntity & {};
 
-// Получение сервиса текстур
+// Obtaining texture service
 export type TGetConnectTexturesRequest = { type: TexturesServiceType };
 export type TGetConnectTexturesResponse = ResponseBaseEntity & {
   data: TextureServiceBaseEntity;
 };
 
-// Изменение сервиса текстур
+// Changing the texture service
 export type TPutConnectTexturesRequest = { type: TexturesServiceType; url: string };
 export type TPutConnectTexturesResponse = ResponseBaseEntity & {};
 
-// Получение сервиса текстур
+// Obtaining Discord connection
 export type TGetConnectDiscordRequest = {};
 export type TGetConnectDiscordResponse = ResponseBaseEntity & {
   data: DiscordBaseEntity;
 };
 
-// Изменение сервиса текстур
+// Changing Discord connection
 export type TPutConnectDiscordRequest = DiscordBaseEntity;
 export type TPutConnectDiscordResponse = ResponseBaseEntity & {};

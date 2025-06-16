@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { IntegrationsPage } from '@/views/integrations';
 
 export const metadata: Metadata = {
-  title: 'Интеграции',
+  title: 'Integrations',
 };
 const Page = async () => {
   return <IntegrationsPage />;

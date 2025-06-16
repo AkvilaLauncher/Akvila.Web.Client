@@ -44,7 +44,7 @@ export const GamePlayers = ({ profile }: GameServersParams) => {
               <div className="ml-2">
                 <CardTitle className="font-bold">{server.name}</CardTitle>
                 <CardDescription className="font-medium mt-1">
-                  {server.isBanned ? 'Заблокирован' : 'Не заблокирован'}
+                  {server.isBanned ? 'Banned' : 'Not banned'}
                 </CardDescription>
               </div>
               <Button

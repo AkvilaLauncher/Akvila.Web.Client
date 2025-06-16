@@ -55,7 +55,7 @@ export function NewsProviderDialog() {
 
   const formSchema = z.object({
     url: z.string().min(2, {
-      message: 'Ссылка обязательна для заполнения.',
+      message: 'The link is required.',
     }),
     type: z.number(),
   });
@@ -83,34 +83,34 @@ export function NewsProviderDialog() {
       <DialogTrigger asChild>
         <Button size="sm" variant="outline" className="w-fit">
           <PlugIcon className="mr-2" size={16} />
-          Подключить
+          Connect
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-full sm:max-w-[1000px]">
-        <DialogTitle className="text-2xl font-bold">Новостные провайдеры</DialogTitle>
-        <p className="text-muted-foreground mb-4">Настройте поставщики данных ваших новостей</p>
+        <DialogTitle className="text-2xl font-bold">News providers</DialogTitle>
+        <p className="text-muted-foreground mb-4">Customize the data providers of your news</p>
         <Section>
           <Tabs defaultValue="connect" className="w-full">
             <TabsList className="mb-4 w-full grid grid-cols-2 h-auto">
               <TabsTrigger value="connect" className="py-3">
                 <PlugIcon className="mr-2 h-4 w-4" />
-                Подключение
+                Connection
               </TabsTrigger>
               <TabsTrigger value="view" className="py-3">
                 <EyeIcon className="mr-2 h-4 w-4" />
-                Предпросмотр новостей
+                News preview
               </TabsTrigger>
             </TabsList>
             <TabsContent value="connect">
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="flex flex-col gap-4 w-full md:w-1/2">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-semibold">Подключенные провайдеры</h3>
+                    <h3 className="text-lg font-semibold">Connected providers</h3>
                   </div>
                   {isLoadingNewsProviders ? (
                     <div className="flex h-[300px] items-center justify-center">
                       <Loader2Icon className="h-6 w-6 animate-spin text-primary" />
-                      <span className="ml-2 text-sm text-muted-foreground">Загрузка...</span>
+                      <span className="ml-2 text-sm text-muted-foreground">Loading...</span>
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 gap-4 h-[300px] overflow-auto pr-2">
@@ -139,14 +139,14 @@ export function NewsProviderDialog() {
                               <div className="flex flex-col gap-1">
                                 <CardTitle className="text-base">{social.name}</CardTitle>
                                 <CardDescription className="text-xs">
-                                  Импорт новостей из {social.name}
+                                  Importing news from {social.name}
                                 </CardDescription>
                               </div>
                             </CardHeader>
                             <CardContent className="pt-0">
                               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <LinkIcon size={14} />
-                                <span className="truncate">{social.url ?? 'Нет ссылки'}</span>
+                                <span className="truncate">{social.url ?? 'No link'}</span>
                               </div>
                             </CardContent>
                           </Card>
@@ -157,9 +157,9 @@ export function NewsProviderDialog() {
                             <PlugIcon className="h-6 w-6 text-muted-foreground" />
                           </div>
                           <div className="text-center">
-                            <p className="text-sm font-medium">Список провайдеров пуст</p>
+                            <p className="text-sm font-medium">The list of providers is empty</p>
                             <p className="text-xs text-muted-foreground mt-1">
-                              Добавьте провайдер новостей с помощью формы справа
+                              Add a news provider using the form on the right
                             </p>
                           </div>
                         </div>
@@ -170,7 +170,7 @@ export function NewsProviderDialog() {
 
                 <div className="flex flex-col w-full md:w-1/2">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-semibold">Добавить новый провайдер</h3>
+                    <h3 className="text-lg font-semibold">Add a new provider</h3>
                   </div>
                   <Card className="border-t-4 border-t-primary">
                     <CardContent className="pt-6">
@@ -181,7 +181,7 @@ export function NewsProviderDialog() {
                             name="type"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base">Социальная сеть</FormLabel>
+                                <FormLabel className="text-base">Social network</FormLabel>
                                 <Select
                                   onValueChange={(value) => field.onChange(Number(value))}
                                   defaultValue={String(NewsTypeEnum.Custom)}
@@ -189,7 +189,7 @@ export function NewsProviderDialog() {
                                 >
                                   <FormControl>
                                     <SelectTrigger className="h-10">
-                                      <SelectValue placeholder="Выберите тип новостей" />
+                                      <SelectValue placeholder="Select the type of news" />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
@@ -223,21 +223,22 @@ export function NewsProviderDialog() {
                             name="url"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base">Ссылка на страницу/сайт</FormLabel>
+                                <FormLabel className="text-base">Link to page/site</FormLabel>
                                 <FormControl>
                                   <div className="relative">
                                     <LinkIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                                     <Input
-                                      placeholder="https://blog.tecloud.tech"
+                                      placeholder="https://blog.example.com"
                                       className="pl-10 h-10"
                                       {...field}
                                     />
                                   </div>
                                 </FormControl>
                                 <FormDescription className="text-xs">
-                                  Не знаете какую ссылку вводить?{' '}
+                                  Don&apos;t know which link to enter?{' '}
+                                  {/*TODO: link to docs Read the documentation*/}
                                   <a href="#" className="text-primary hover:underline">
-                                    Ознакомьтесь с документацией
+                                    Read the documentation
                                   </a>
                                   .
                                 </FormDescription>
@@ -253,7 +254,7 @@ export function NewsProviderDialog() {
                               disabled={isPending || !form.formState.isDirty}
                             >
                               {isPending && <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />}
-                              Создать
+                              Create
                             </Button>
                           </div>
                         </form>

@@ -14,8 +14,8 @@ export const useRegistration = () => {
     mutationKey: ['signup'],
     mutationFn: (data: TPostSignUpRequest) => authService.signUp(data),
     onSuccess: () => {
-      toast.success('Успешная регистрация', {
-        description: 'Добро пожаловать в платформу',
+      toast.success('Successful registration', {
+        description: 'Welcome to the platform',
       });
 
       route.push(DASHBOARD_PAGES.PROFILES);
@@ -24,7 +24,7 @@ export const useRegistration = () => {
       isAxiosError({
         toast,
         error,
-        customDescription: 'Ошибка сервиса авторизации. Обратитесь к администратору платформы',
+        customDescription: 'Authorization service error. Contact the platform administrator',
       });
     },
   });
@@ -37,8 +37,8 @@ export const useLogin = () => {
     mutationKey: ['signin'],
     mutationFn: (data: TPostSignInRequest) => authService.signIn(data),
     onSuccess: () => {
-      toast.success('Успешная авторизация', {
-        description: 'Добро пожаловать в платформу',
+      toast.success('Successful authorization', {
+        description: 'Welcome to the platform',
       });
       route.push(DASHBOARD_PAGES.PROFILES);
     },
@@ -46,7 +46,7 @@ export const useLogin = () => {
       isAxiosError({
         toast,
         error,
-        customDescription: 'Ошибка сервиса авторизации. Обратитесь к администратору платформы',
+        customDescription: 'Authorization service error. Contact the platform administrator',
       });
     },
   });

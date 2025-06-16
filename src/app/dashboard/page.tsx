@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { DASHBOARD_PAGES } from '@/shared/routes';
 
 export const metadata: Metadata = {
-  title: 'Дашборд',
+  title: 'Dashboard',
 };
 
 export default async function DashboardPage() {

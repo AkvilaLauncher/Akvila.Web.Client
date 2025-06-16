@@ -11,7 +11,6 @@ import { DesktopNavigation } from '@/shared/ui/DesktopNavigation';
 import { MobileNavigation } from '@/shared/ui/MobileNavigation';
 import { AccountNavigation } from '@/shared/ui/AccountNavigation';
 import { DASHBOARD_PAGES } from '@/shared/routes';
-import { DonationPro } from '@/shared/ui/DonationPro';
 import { TMenuItem } from '@/shared/types';
 import logo from '@/assets/logos/logo.svg';
 
@@ -19,27 +18,27 @@ const menu: TMenuItem[] = [
   {
     icon: <BlocksIcon size={16} />,
     path: DASHBOARD_PAGES.PROFILES,
-    text: 'Профили',
+    text: 'Profiles',
   },
   {
     icon: <ArrowUpDownIcon size={16} />,
     path: DASHBOARD_PAGES.INTEGRATIONS,
-    text: 'Интеграции',
+    text: 'Integrations',
   },
   {
     icon: <Users2Icon size={16} />,
     path: DASHBOARD_PAGES.PLAYERS,
-    text: 'Игроки',
+    text: 'Players',
   },
   {
     icon: <PieChartIcon size={16} />,
     path: DASHBOARD_PAGES.SENTRY,
-    text: 'Ошибки',
+    text: 'Errors',
   },
   {
     icon: <SettingsIcon size={16} />,
     path: DASHBOARD_PAGES.SETTINGS,
-    text: 'Настройки',
+    text: 'Settings',
   },
 ];
 
@@ -50,15 +49,12 @@ export default function Page({ children }: React.PropsWithChildren) {
         <div className={classes.aside__wrapper}>
           <div className={classes['aside__wrapper-logo']}>
             <Link href="/" className={classes.aside__logo}>
-              <Image src={logo} alt="Gml Frontend" />
+              <Image src={logo} alt="Akvila Frontend" />
               {config.name}
               <sup className={classes.version}>{config.version}</sup>
             </Link>
           </div>
           <DesktopNavigation menu={menu} />
-          <div className={classes.aside__pro}>
-            <DonationPro />
-          </div>
         </div>
       </aside>
       <div className={classes.content}>

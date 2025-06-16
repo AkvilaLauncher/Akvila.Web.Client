@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { RowSelectionState } from '@tanstack/react-table';
-import { Edit2Icon } from 'lucide-react';
+import { Edit2Icon, Trash2Icon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 import { useColumns } from '../lib/columns';
@@ -35,10 +35,11 @@ import { convertApiGameLoaderImage } from '@/shared/converters';
 import { ClientState } from '@/widgets/client-hub';
 import { Button } from '@/shared/ui/button';
 import { DASHBOARD_PAGES } from '@/shared/routes';
+import { Icons } from '@/shared/ui/icons';
+import { ProfileBaseEntity } from '@/shared/api/contracts';
 
 export function ProfilesCard() {
   const { data: profiles, isLoading } = useProfiles();
-  const { data: currentProfile } = useCurrentProfile();
   const router = useRouter();
   const deleteMutation = useDeleteProfile();
   const deleteAllMutation = useDeleteProfiles();
@@ -51,6 +52,8 @@ export function ProfilesCard() {
 
   const [isProfileDeleteModalOpen, setIsProfileDeleteModalOpen] = useState(false);
   const onProfileDeleteModalToggle = () => setIsProfileDeleteModalOpen((prev) => !prev);
+
+  const [profileToDelete, setProfileToDelete] = useState<ProfileBaseEntity | null>(null);
 
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const { columns } = useColumns({
@@ -83,7 +86,6 @@ export function ProfilesCard() {
       {isLoading && <ProfilesTableSkeleton />}
       {profiles && (
         <>
-          <DataTableToolbar rowSelection={rowSelection} onOpenChange={onProfilesDrawerToggle} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             {profiles.map((profile) => (
               <Card key={profile.name} className="w-full">
@@ -91,11 +93,11 @@ export function ProfilesCard() {
                   <CardTitle className="flex items-center gap-4">
                     {profile.iconBase64 ? (
                       <Image
-                        className="min-w-12 min-h-12 h-12 w-12"
+                        className="min-w-16 min-h-16 h-16 w-16"
                         src={`data:image/png;base64,${profile.iconBase64}`}
                         alt={profile.name || 'Profile Icon'}
-                        width={48}
-                        height={48}
+                        width={64}
+                        height={64}
                       />
                     ) : (
                       <div className="flex items-center justify-center min-w-12 min-h-12 h-12 w-12 bg-gray-200/5 rounded-xl">
@@ -105,8 +107,18 @@ export function ProfilesCard() {
 
                     <div className="flex flex-col gap-1">
                       <div className="flex flex-col gap-2">
-                        <h3>{profile.displayName}</h3>
-                        <p className="text-sm text-muted-foreground">{profile.name}</p>
+                        <p className="text-s">
+                          {profile.displayName}{' '}
+                          <p className="text-sm text-muted-foreground">{profile.name}</p>
+                          <div className="flex">
+                            <span className="text-sm text-muted-foreground">
+                              {profile.launchVersion}
+                            </span>
+                            {convertApiGameLoaderImage(profile.loader) || (
+                              <span className="font-medium">Not loaded </span>
+                            )}
+                          </div>
+                        </p>
                       </div>
                     </div>
                   </CardTitle>
@@ -115,32 +127,43 @@ export function ProfilesCard() {
                 <CardContent className="pt-4">
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <div className="flex">
-                        {convertApiGameLoaderImage(profile.state) || 'Не загружен'}
-                        {profile.launchVersion}
-                      </div>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="font-medium">Дата создания:</span>
+                      <span className="font-medium">Creation date:</span>
                       <span>{new Date(profile.createDate).toLocaleDateString()}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-medium">Приоритет:</span>
+                      <span className="font-medium">Priority:</span>
                       <span>{profile.priority}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="font-medium">Статус:</span>
+                      <span className="font-medium">Status:</span>
                       <ClientState state={profile.state} />
                     </div>
 
-                    <Button
-                      variant="secondary"
-                      className="gap-3 w-full"
-                      onClick={onRedirectEditProfile(profile.name)}
-                    >
-                      <Edit2Icon size={16} />
-                      Изменить
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="secondary"
+                        className="gap-3 flex-1"
+                        onClick={onRedirectEditProfile(profile.name)}
+                      >
+                        <Edit2Icon size={16} />
+                        Edit
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="icon"
+                        onClick={() => {
+                          setProfileToDelete(profile);
+                          onProfileDeleteModalToggle();
+                        }}
+                        disabled={deleteMutation.isPending}
+                      >
+                        {deleteMutation.isPending ? (
+                          <Icons.spinner className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <Trash2Icon size={16} />
+                        )}
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -152,9 +175,9 @@ export function ProfilesCard() {
       <AlertDialog open={isProfileDeleteModalOpen} onOpenChange={onProfileDeleteModalToggle}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Удаление профиля</AlertDialogTitle>
+            <AlertDialogTitle>Profile deletion</AlertDialogTitle>
             <AlertDialogDescription>
-              {`Вы уверены что хотите безвозвратно удалить профиль "${currentProfile?.name}"?`}
+              {`Are you sure you want to permanently delete the profile "${profileToDelete?.name}"?`}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="flex items-center space-x-2">
@@ -163,17 +186,17 @@ export function ProfilesCard() {
               checked={isRemoveFilesSwitch}
               onClick={onRemoveFilesSwitchToggle}
             />
-            <Label htmlFor="remove-files">Удалить файлы</Label>
+            <Label htmlFor="remove-files">Delete files</Label>
           </div>
           <AlertDialogFooter>
-            <AlertDialogCancel>Отмена</AlertDialogCancel>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={onProfileDelete({
-                profileName: currentProfile?.name || '',
+                profileName: profileToDelete?.name || '',
                 removeFiles: isRemoveFilesSwitch,
               })}
             >
-              Удалить
+              Delete
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -29,18 +29,18 @@ export function GenerateLauncherDialog() {
       <DialogTrigger asChild>
         <Button size="sm" variant="outline" className="w-fit">
           <Hammer className="mr-2" size={16} />
-          Собрать
+          Compile
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
-          <DialogTitle>Сборка лаунчера</DialogTitle>
+          <DialogTitle>Launcher compile</DialogTitle>
         </DialogHeader>
         <Tabs defaultValue="download">
           <TabsList>
-            <TabsTrigger value="download">Скачивание</TabsTrigger>
-            <TabsTrigger value="build">Сборка</TabsTrigger>
-            <TabsTrigger value="update">Обновление</TabsTrigger>
+            <TabsTrigger value="download">Download</TabsTrigger>
+            <TabsTrigger value="build">Compile</TabsTrigger>
+            <TabsTrigger value="update">Update</TabsTrigger>
           </TabsList>
           <TabsContent value="download">
             <DownloadClientForm

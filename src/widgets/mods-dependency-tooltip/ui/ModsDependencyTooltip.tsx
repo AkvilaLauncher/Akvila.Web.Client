@@ -19,18 +19,18 @@ interface ModsDependencyDialog {
 export function ModsDependencyTooltip({ profile, dependencies, modType }: ModsDependencyDialog) {
   const [dependencyInfo, setDependencyInfo] = useState<ModInfoEntity[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const abortControllerRef = useRef<AbortController | null>(null); // Храним текущий AbortController
+  const abortControllerRef = useRef<AbortController | null>(null); // Storing current AbortController
   const fetchDependencies = async () => {
     setIsLoading(true);
 
     if (dependencies === undefined) return;
 
-    // Отменяем предыдущий запрос, если существует
+    // Cancel the previous request if there is
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
 
-    // Создаём новый AbortController
+    // Creating new AbortController
     const abortController = new AbortController();
     abortControllerRef.current = abortController;
 
@@ -52,7 +52,7 @@ export function ModsDependencyTooltip({ profile, dependencies, modType }: ModsDe
         fetchedData.filter((info): info is ModInfoEntity => info !== undefined) ?? [],
       );
     } catch (error) {
-      console.error('Ошибка загрузки информации о зависимостях:', error);
+      console.error('Error loading dependency information:', error);
       setDependencyInfo([]);
     } finally {
       setIsLoading(false);
@@ -69,12 +69,12 @@ export function ModsDependencyTooltip({ profile, dependencies, modType }: ModsDe
           onMouseEnter={() => fetchDependencies()}
         >
           <InfoIcon className="text-muted-foreground" size={18} />
-          {dependencies.length} зависимости(ей)
+          {dependencies.length} dependencies
         </Badge>
       </TooltipTrigger>
       <TooltipContent>
         {isLoading ? (
-          <p>Загрузка зависимостей...</p>
+          <p>Loading dependencies...</p>
         ) : dependencyInfo.length > 0 ? (
           <div className="flex flex-col gap-2">
             {dependencyInfo.map((info, index) => (
@@ -90,7 +90,7 @@ export function ModsDependencyTooltip({ profile, dependencies, modType }: ModsDe
             ))}
           </div>
         ) : (
-          <p>Нет зависимостей</p>
+          <p>No dependencies</p>
         )}
       </TooltipContent>
     </Tooltip>

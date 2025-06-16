@@ -20,13 +20,13 @@ import { convertApiGameLoaderImage } from '@/shared/converters';
 
 enum ColumnHeader {
   ICON = '',
-  NAME = 'Название',
-  CREATED_AT = 'Дата создания',
-  VERSION_LAUNCHER = 'Запускаемая версия',
+  NAME = 'Name',
+  CREATED_AT = 'Created At',
+  VERSION_LAUNCHER = 'Running version',
   LOADER_LAUNCHER = '',
-  GAME_VERSION = 'Версия',
-  PRIORITY = 'Приоритет',
-  PROFILE_STATE = 'Статус',
+  GAME_VERSION = 'Version',
+  PRIORITY = 'Priority',
+  PROFILE_STATE = 'Status',
 }
 
 interface UseColumnsProps {
@@ -56,16 +56,16 @@ export const useColumns = (props: UseColumnsProps) => {
             (table.getIsSomePageRowsSelected() && 'indeterminate')
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Выбрать все строки"
-          className="translate-y-[2px]"
+          aria-label="Select all rows"
+          className="translate-y-[-3px]"
         />
       ),
       cell: ({ row }) => (
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Выбрать строку"
-          className="translate-y-[2px]"
+          aria-label="Select a line"
+          className="translate-y-[-3px]"
         />
       ),
       enableSorting: false,
@@ -107,14 +107,14 @@ export const useColumns = (props: UseColumnsProps) => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={ColumnHeader.LOADER_LAUNCHER} />
       ),
-      cell: ({ getValue }) => (getValue() ? convertApiGameLoaderImage(getValue()) : 'Не загружен'),
+      cell: ({ getValue }) => (getValue() ? convertApiGameLoaderImage(getValue()) : 'Not loaded'),
     }),
     columnsHelper.accessor('launchVersion', {
       size: 500,
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={ColumnHeader.VERSION_LAUNCHER} />
       ),
-      cell: ({ getValue }) => (getValue() ? getValue() : 'Не загружен'),
+      cell: ({ getValue }) => (getValue() ? getValue() : 'Not loaded'),
     }),
     columnsHelper.accessor('gameVersion', {
       size: 100,

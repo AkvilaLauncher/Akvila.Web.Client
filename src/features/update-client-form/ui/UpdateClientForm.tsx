@@ -60,11 +60,11 @@ export function UpdateClientForm({ className, onOpenChange, ...props }: UpdateCl
             name="launcherBuild"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Выберите версию билда</FormLabel>
+                <FormLabel>Select the build version</FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Выберите версию билда" />
+                      <SelectValue placeholder="Select the build version" />
                     </SelectTrigger>
                     <SelectContent>
                       {versions &&
@@ -88,7 +88,7 @@ export function UpdateClientForm({ className, onOpenChange, ...props }: UpdateCl
             name="version"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Введите версию обновления</FormLabel>
+                <FormLabel>Enter the version of the update</FormLabel>
                 <FormControl>
                   <Input placeholder="1.0.0.0" {...field} />
                 </FormControl>
@@ -99,14 +99,14 @@ export function UpdateClientForm({ className, onOpenChange, ...props }: UpdateCl
                   {actualVersion && actualVersion.length > 0 ? (
                     actualVersion.map(([title, data]) => (
                       <span key={title}>
-                        Актуальная версия для {title}: {data.version}
+                        Current version for {title}: {data.version}
                         <Button asChild variant="link" className="ml-2">
-                          <Link href={`${getApiBaseUrl()}/api/v1/file/${data.guid}`}>Скачать</Link>
+                          <Link href={`${getApiBaseUrl()}/api/v1/file/${data.guid}`}>Download</Link>
                         </Button>
                       </span>
                     ))
                   ) : (
-                    <span>Лаунчер ни разу не обновлялся *</span>
+                    <span>Launcher has never been updated *</span>
                   )}
                 </FormDescription>
               </FormItem>
@@ -118,9 +118,9 @@ export function UpdateClientForm({ className, onOpenChange, ...props }: UpdateCl
             name="title"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Введите название обновление</FormLabel>
+                <FormLabel>Enter the name of the update</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ого! Вышло обновление!" {...field} />
+                  <Input placeholder="Wow, there's an update out!" {...field} />
                 </FormControl>
                 {form.formState.errors.title && (
                   <FormMessage>{form.formState.errors.title.message}</FormMessage>
@@ -134,9 +134,9 @@ export function UpdateClientForm({ className, onOpenChange, ...props }: UpdateCl
             name="description"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Введите описание обновление</FormLabel>
+                <FormLabel>Enter a description of the update</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Введите описание обновления" {...field} />
+                  <Textarea placeholder="Enter a description of the update" {...field} />
                 </FormControl>
                 {form.formState.errors.description && (
                   <FormMessage>{form.formState.errors.description.message}</FormMessage>
@@ -148,7 +148,7 @@ export function UpdateClientForm({ className, onOpenChange, ...props }: UpdateCl
           <div className="flex gap-x-4 justify-end items-center">
             <Button className="w-fit" disabled={isPending || !form.formState.isDirty}>
               {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Обновить
+              Update
             </Button>
           </div>
         </form>

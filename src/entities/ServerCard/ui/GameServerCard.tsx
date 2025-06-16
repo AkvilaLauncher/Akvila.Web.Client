@@ -21,11 +21,11 @@ export const GameServerCard = ({ server, profileName }: GameServerCardParams) =>
   return (
     <Card className="flex flex-row items-center justify-between gap-y-4 p-3 pr-8">
       <div className="flex flex-row gap-x-5 items-center">
-        <Image src={minecraftLogo} className="w-16" alt="Gml Frontend" />
+        <Image src={minecraftLogo} className="w-16" alt="Minecraft logo" />
         <div className="flex flex-col min-w-[350px]">
           <span className="text-lg font-bold">{server.name}</span>
           <span className="text-gray-600 dark:text-gray-400 font-medium text-sm">
-            {server.version ?? 'Нет информации'}
+            {server.version ?? 'No info'}
           </span>
         </div>
         {server.isOnline && (
@@ -39,7 +39,7 @@ export const GameServerCard = ({ server, profileName }: GameServerCardParams) =>
                 <div className="flex items-center justify-center text-sm font-medium text-muted-foreground rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition h-10 w-10">
                   {server.online}
                 </div>
-                из
+                of
                 <div className="flex items-center justify-center text-sm font-medium text-muted-foreground rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition h-10 w-10">
                   {server.maxOnline}
                 </div>

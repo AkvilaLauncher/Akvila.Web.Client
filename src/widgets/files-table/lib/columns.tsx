@@ -9,9 +9,9 @@ import { ProfileExtendedBaseEntity, ProfileFileBaseEntity } from '@/shared/api/c
 import { Checkbox } from '@/shared/ui/checkbox';
 
 enum ColumnHeader {
-  NAME = 'Название',
-  DIRECTORY = 'Файл',
-  FILE_SIZE = 'Размер файла',
+  NAME = 'Name',
+  DIRECTORY = 'File',
+  FILE_SIZE = 'File size',
   ADDITIONAL = '',
 }
 
@@ -28,16 +28,16 @@ export const useColumns = (profile: ProfileExtendedBaseEntity) => {
             (table.getIsSomePageRowsSelected() && 'indeterminate')
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Выбрать все строки"
-          className="translate-y-[2px]"
+          aria-label="Select all rows"
+          className="translate-y-[1px]"
         />
       ),
       cell: ({ row }) => (
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Выбрать строку"
-          className="translate-y-[2px]"
+          aria-label="Select row"
+          className="translate-y-[-3px]"
         />
       ),
       enableSorting: false,
@@ -73,7 +73,7 @@ export const useColumns = (profile: ProfileExtendedBaseEntity) => {
               className={`flex items-center gap-2 ${fileExists ? 'text-green-500' : 'text-red-500'} font-bold`}
             >
               <FileX2Icon size="16" />
-              Файл удален *
+              File deleted *
             </div>
           );
       },

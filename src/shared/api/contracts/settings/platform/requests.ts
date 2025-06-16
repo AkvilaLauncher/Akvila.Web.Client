@@ -8,7 +8,7 @@ export type TGetSettingsPlatformResponse = ResponseBaseEntity & {
   data: SettingsPlatformBaseEntity;
 };
 
-// Изменение сервера авторизации
+// Changing the authorization server
 export type TPutSettingsPlatformRequest = {
   registrationIsEnabled: boolean;
   storageType: StorageType;

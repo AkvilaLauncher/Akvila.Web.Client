@@ -22,7 +22,7 @@ export function ConnectDiscordDialog() {
   const { data: discord, isLoading } = useDiscord();
 
   const isConnected = Boolean(discord?.clientId);
-  const connectionText = isConnected ? 'Изменить' : 'Подключить';
+  const connectionText = isConnected ? 'Modify' : 'Connect';
   const connectionIcon = isConnected ? (
     <PencilIcon className="mr-2" size={16} />
   ) : (
@@ -60,10 +60,10 @@ export function ConnectDiscordDialog() {
                 <line x1="9" y1="9" x2="15" y2="15" />
               </svg>
             </div>
-            <DialogTitle className="text-xl">Подключение Discord</DialogTitle>
+            <DialogTitle className="text-xl">Connecting Discord</DialogTitle>
           </div>
           <DialogDescription className="text-muted-foreground">
-            Настройте интеграцию с Discord для отображения активности пользователей
+            Set up Discord integration to display user activity
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-x-8">

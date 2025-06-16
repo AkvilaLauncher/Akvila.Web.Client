@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ProfilesPage } from '@/views/profiles';
 
 export const metadata: Metadata = {
-  title: 'Профили',
+  title: 'Profiles',
 };
 const Page = async () => {
   return <ProfilesPage />;

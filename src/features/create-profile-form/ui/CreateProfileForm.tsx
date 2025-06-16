@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -60,7 +60,7 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
 
   useEffect(() => {
     form.setValue('loaderVersion', loaderVersion.data?.[0]);
-  }, [loaderVersion.data]);
+  }, [loaderVersion.data, form]);
 
   const onSubmit: SubmitHandler<CreateProfileFormSchemaType> = async (
     data: CreateProfileFormSchemaType,
@@ -87,9 +87,9 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem>
-            <FormLabel>Иконка</FormLabel>
+            <FormLabel>Icon</FormLabel>
             <FormControl>
-              <Input type="file" placeholder="Выберите иконку сервера" {...form.register('icon')} />
+              <Input type="file" placeholder="Select a server icon" {...form.register('icon')} />
             </FormControl>
             {form.formState.errors.icon && (
               <FormMessage>{form.formState.errors.icon.message?.toString()}</FormMessage>
@@ -97,27 +97,30 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
           </FormItem>
 
           <FormItem>
-            <FormLabel>Название профиля</FormLabel>
+            <FormLabel>Profile name</FormLabel>
             <FormControl>
-              <Input placeholder="Введите название профиля" {...form.register('name')} />
+              <Input placeholder="Enter a profile name" {...form.register('name')} />
             </FormControl>
             {form.formState.errors.name && (
               <FormMessage>{form.formState.errors.name.message}</FormMessage>
             )}
           </FormItem>
           <FormItem>
-            <FormLabel>Отображаемое имя</FormLabel>
+            <FormLabel>Displayed name</FormLabel>
             <FormControl>
-              <Input placeholder="Введите название профиля" {...form.register('displayName')} />
+              <Input placeholder="Enter a profile name" {...form.register('displayName')} />
             </FormControl>
             {form.formState.errors.displayName && (
               <FormMessage>{form.formState.errors.displayName.message}</FormMessage>
             )}
           </FormItem>
           <FormItem>
-            <FormLabel>Введите описание профиля</FormLabel>
+            <FormLabel>Enter a profile description</FormLabel>
             <FormControl>
-              <Textarea placeholder="Введите описание профиля" {...form.register('description')} />
+              <Textarea
+                placeholder="Enter a profile description"
+                {...form.register('description')}
+              />
             </FormControl>
             {form.formState.errors.description && (
               <FormMessage>{form.formState.errors.description.message}</FormMessage>
@@ -129,12 +132,12 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
               name="version"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Версия игры</FormLabel>
+                  <FormLabel>Game version</FormLabel>
                   <FormCombobox
                     name={field.name}
                     value={field.value}
-                    placeholder="Выберите версию игры"
-                    placeholderInputSearch="Поиск версий"
+                    placeholder="Select the game version"
+                    placeholderInputSearch="Version Search"
                     options={versions && versions.data}
                     isLoading={versions.isLoading}
                     setValue={form.setValue}
@@ -150,7 +153,7 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
               name="gameLoader"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Загрузчик</FormLabel>
+                  <FormLabel>Loader</FormLabel>
                   <FormControl>
                     <Select
                       onValueChange={field.onChange}
@@ -158,7 +161,7 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
                       disabled={!form.getFieldState('version').isDirty || loaderVersion.isFetching}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Выберите игровой загрузчик" />
+                        <SelectValue placeholder="Select a game loader" />
                       </SelectTrigger>
                       <SelectContent>
                         {enumValues(GameLoaderOption).map(([loader, value]) => (
@@ -183,18 +186,18 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
               name="loaderVersion"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Версия</FormLabel>
+                  <FormLabel>Version</FormLabel>
                   <FormCombobox
                     name={field.name}
                     value={field.value}
                     placeholder={
                       loaderVersion.data?.length
-                        ? 'Выберите версию загрузчика'
-                        : 'Данная версия игры не поддерживается загрузчиком'
+                        ? 'Select game loader version'
+                        : 'This version of the game is not supported by the game loader'
                     }
-                    placeholderInputSearch="Поиск версии загрузчика"
+                    placeholderInputSearch="Search for game loader version"
                     options={loaderVersion && loaderVersion.data}
-                    description="Данная версия игры не поддерживается загрузчиком"
+                    description="This version of the game is not supported by the game loader"
                     isError={loaderVersion.isError}
                     isLoading={!form.getFieldState('version').isDirty || loaderVersion.isFetching}
                     setValue={form.setValue}
@@ -218,7 +221,7 @@ export function CreateProfileForm(props: CreateProfileFormProps) {
               }
             >
               {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Создать
+              Create
             </Button>
           </div>
         </form>

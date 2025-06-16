@@ -96,8 +96,8 @@ export const useCreateProfile = () => {
     mutationFn: (data: TPostProfilesRequest) => profileService.createProfile(data),
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: profileKeys.all });
-      toast.success('Успешно', {
-        description: `Профиль "${data.data.data.name}" успешно создан`,
+      toast.success('Successful', {
+        description: `Profile "${data.data.data.name}" was successfully created`,
       });
     },
     onError: (error) => {
@@ -116,8 +116,8 @@ export const useLoadProfileMods = () => {
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: modsKeys.all });
       setProfileCardState(EntityState.ENTITY_STATE_NEED_COMPILE);
-      toast.success('Успешно', {
-        description: 'Мод успешно загружен',
+      toast.success('Successful', {
+        description: 'Mod successfully uploaded',
       });
     },
     onError: (error) => {
@@ -137,8 +137,8 @@ export const useLoadProfileModsByUrl = () => {
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: modsKeys.all });
       setProfileCardState(EntityState.ENTITY_STATE_NEED_COMPILE);
-      toast.success('Успешно', {
-        description: 'Мод успешно загружен',
+      toast.success('Successful', {
+        description: 'Mod successfully uploaded',
       });
     },
     onError: (error) => {
@@ -157,8 +157,8 @@ export const useRemoveProfileMod = () => {
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: modsKeys.all });
       setProfileCardState(EntityState.ENTITY_STATE_NEED_COMPILE);
-      toast.success('Успешно', {
-        description: 'Мод успешно удален',
+      toast.success('Successful', {
+        description: 'Mod successfully deleted',
       });
     },
     onError: (error) => {
@@ -193,7 +193,7 @@ export const useDeleteProfile = () => {
       await queryClient.setQueryData(profileKeys.reading(), () => null);
     },
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
     },
@@ -213,7 +213,7 @@ export const useDeleteProfiles = () => {
       await queryClient.invalidateQueries({ queryKey: profileKeys.all });
     },
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
     },
@@ -233,7 +233,7 @@ export const useAddProfilePlayers = (profileName?: string) => {
       await queryClient.invalidateQueries({
         queryKey: [...profileKeys.reading(), { profileName: profileName }],
       });
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
     },
@@ -251,7 +251,7 @@ export const useDeleteProfilePlayers = ({ profileName }: { profileName: string }
     mutationFn: ({ playerUuid }: { playerUuid: string }) =>
       profileService.deletePlayer({ profileName, playerUuid }),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
     },

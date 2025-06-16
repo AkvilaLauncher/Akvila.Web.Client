@@ -25,69 +25,69 @@ export const IntegrationsPage = () => {
   return (
     <>
       <Breadcrumbs
-        current={'Интеграции'}
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        current={'Integrations'}
+        breadcrumbs={[{ value: 'Home', path: DASHBOARD_PAGES.HOME }]}
       />
       <div className="flex flex-col items-start py-4">
         <div className="flex justify-between w-full">
-          <h1 className="text-xl font-bold mb-4">Интеграции</h1>
+          <h1 className="text-xl font-bold mb-4">Integrations</h1>
         </div>
         <div className="flex flex-col gap-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
             <IntegrationCard
-              title="Аутентификация"
-              description="Синхронизация и управление данными о пользователях на платформе"
+              title="Authentication"
+              description="Synchronization and management of user data on the platform"
               dialog={<ChooseAuthenticationMethodDialog />}
               testid={DATA_TEST_ID_DIALOG_AUTHENTICATION_METHOD}
             />
             <IntegrationCard
-              title="Сервис скинов"
-              description="Добавь интеграцию со сервисом скинов, для отображения скинов и плащей в игре"
+              title="Skin service"
+              description="Add integration with the skin service, to display skins and cloaks in-game"
               dialog={<ConnectTexturesDialog />}
               testid={DATA_TEST_ID_DIALOG_CONNECT_TEXTURES}
             />
             <IntegrationCard
               title="Discord"
-              description="Синхронизация лаунчера и вашего Discord сервера"
+              description="Synchronization of the Launcher and your Discord server"
               dialog={<ConnectDiscordDialog />}
               testid={DATA_TEST_ID_DIALOG_CONNECT_DISCORD}
             />
             <IntegrationCard
-              title="Новости"
-              description="Выводите новости из социальных сетей Вконтакте, Telegram или вашего сайта"
+              title="News"
+              description="Display news from social networks or your website"
               dialog={<NewsProviderDialog />}
               testid={DATA_TEST_ID_DIALOG_NEWS_PROVIDER}
             />
           </div>
           <div className="flex justify-between w-full">
-            <h1 className="text-xl font-bold">Лаунчер</h1>
+            <h1 className="text-xl font-bold">Launcher</h1>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
             <IntegrationCard
-              title="Сборка лаунчера"
-              description="Создайте лаунчер для платформ Windows, MacOS и Linux в пару кликов"
+              title="Launcher build"
+              description="Create a Launcher for Windows, Linux and MacOS platforms in a couple of clicks"
               dialog={<GenerateLauncherDialog />}
               testid={DATA_TEST_ID_DIALOG_GENERATE_LAUNCHER}
             />
           </div>
           <div className="flex justify-between w-full">
-            <h1 className="text-xl font-bold">Дополнительное</h1>
+            <h1 className="text-xl font-bold">Extra</h1>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
             <IntegrationCard
               title="Sentry"
-              description={'Подключение платформы для отслеживания ошибок и мониторинга приложений'}
+              description={'Connecting a platform for bug tracking and application monitoring'}
               dialog={<ConnectSentryDialog />}
               testid={DATA_TEST_ID_DIALOG_CONNECT_SENTRY}
             />
             <IntegrationCard
-              title="Нужен сервис?"
-              description="Отправь заявку, а мы придумаем что-нибудь"
+              title="Need integration?"
+              description="Send in an application and we'll work something out"
               dialog={
                 <Link target="_blank" href={HREF_DISCORD}>
                   <Button size="sm" variant="outline" className="w-fit">
                     <LinkIcon className="mr-2" size={16} />
-                    Поддержка
+                    Support
                   </Button>
                 </Link>
               }

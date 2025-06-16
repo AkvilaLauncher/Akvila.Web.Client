@@ -18,8 +18,8 @@ export const useEditSettingsPlatform = () => {
     mutationKey: ['edit-settings-platform'],
     mutationFn: (data: TPutSettingsPlatformRequest) => settingsService.editPlatform(data),
     onSuccess: (data) => {
-      toast.success('Успешно', {
-        description: `Настройки платформы успешно обновлены`,
+      toast.success('Successful', {
+        description: `Platform settings successfully updated`,
       });
     },
     onError: (error) => {

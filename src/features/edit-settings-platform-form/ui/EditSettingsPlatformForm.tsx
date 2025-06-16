@@ -84,12 +84,11 @@ export const EditSettingsPlatformForm = () => {
                     <div className="flex flex-row items-center gap-x-1 mb-2">
                       <UsersIcon className="mr-2 h-4 w-4" />
                       <h6 className="text-sm font-bold">
-                        Регистрация новых пользователей (
-                        {watchRegistration ? 'Разрешена' : 'Запрещена'})
+                        Registration of new users ({watchRegistration ? 'Allowed' : 'Forbidden'})
                       </h6>
                     </div>
                     <p className="text-sm text-gray-700 dark:text-gray-300">
-                      Позволяет регистрироваться новым пользователям на сайте
+                      Allows new users to register on the site
                     </p>
                   </div>
                   <FormControl>
@@ -111,10 +110,10 @@ export const EditSettingsPlatformForm = () => {
                     <div className="space-y-0.5">
                       <div className="flex flex-row items-center gap-x-1 mb-2">
                         <ImagesIcon className="mr-2 h-4 w-4" />
-                        <h6 className="text-sm font-bold">Тип HTTP для сервиса скинов</h6>
+                        <h6 className="text-sm font-bold">HTTP type for the skin service</h6>
                       </div>
                       <p className="text-sm text-gray-700 dark:text-gray-300">
-                        Протокол передачи текстур для Minecraft клиента
+                        Texture Transfer Protocol for Minecraft client
                       </p>
                     </div>
                     {isLoading ? (
@@ -126,7 +125,7 @@ export const EditSettingsPlatformForm = () => {
                       >
                         <FormControl className="max-w-32">
                           <SelectTrigger>
-                            <SelectValue placeholder="Выберите протокол" />
+                            <SelectValue placeholder="Select a protocol" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -144,10 +143,10 @@ export const EditSettingsPlatformForm = () => {
               {currentProtocol !== form.watch('textureProtocol') && !isLoading && (
                 <Alert variant="destructive">
                   <ExclamationTriangleIcon className="h-4 w-4" />
-                  <AlertTitle>Внимание!</AlertTitle>
+                  <AlertTitle>Warning!</AlertTitle>
                   <AlertDescription>
-                    Протоколы передачи данных текстур и бэкенда <strong>не совпадают</strong>.
-                    Возможны ошибки при загрузке текстур или их полное отсутствие.
+                    Texture and backend data transfer protocols <strong>don&apos;t match</strong>.
+                    There may be errors when loading textures or their complete lack.
                   </AlertDescription>
                 </Alert>
               )}
@@ -157,10 +156,10 @@ export const EditSettingsPlatformForm = () => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <div className="flex flex-row items-center gap-x-1 mb-2">
                 <DatabaseIcon className="mr-2 h-4 w-4" />
-                <h6 className="text-sm font-bold">Хранилище</h6>
+                <h6 className="text-sm font-bold">Storage</h6>
               </div>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Текущее хранилище, где хранится лаунчер
+                Current repository where the launcher is stored
               </p>
             </div>
             <div className="flex flex-col w-1/2">
@@ -178,7 +177,7 @@ export const EditSettingsPlatformForm = () => {
                       >
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Выберите хранилище" />
+                            <SelectValue placeholder="Select storage" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
@@ -202,9 +201,9 @@ export const EditSettingsPlatformForm = () => {
             <div className="flex flex-col gap-y-4 mb-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
                 <div className="flex flex-col gap-y-1 min-w-96 mb-2 lg:mb-0">
-                  <h6 className="text-sm font-bold">Хост хранилища S3</h6>
+                  <h6 className="text-sm font-bold">S3 Storage Host</h6>
                   <p className="text-sm text-gray-700 dark:text-gray-300">
-                    Укажите хост-адрес вашего хранилища S3
+                    Specify the host address of your S3 repository
                   </p>
                 </div>
                 <div className="flex flex-col gap-y-1 min-w-96 mb-2 lg:mb-0">
@@ -217,7 +216,7 @@ export const EditSettingsPlatformForm = () => {
                           {isLoading ? (
                             <Skeleton className="w-full h-10" />
                           ) : (
-                            <Input type="text" placeholder="Введите хост хранилища" {...field} />
+                            <Input type="text" placeholder="Enter the storage host" {...field} />
                           )}
                         </FormControl>
                         {form.formState.errors.storageHost && !isLoading && (
@@ -234,7 +233,7 @@ export const EditSettingsPlatformForm = () => {
                 <div className="flex flex-col gap-y-1 min-w-96 mb-2 lg:mb-0">
                   <h6 className="text-sm font-bold">Access Key</h6>
                   <p className="text-sm text-gray-700 dark:text-gray-300">
-                    Укажите access key для доступа к вашему хранилищу S3
+                    Specify the access key to access your S3 storage
                   </p>
                 </div>
                 <div className="flex flex-col gap-y-1 min-w-96 mb-2 lg:mb-0">
@@ -249,7 +248,7 @@ export const EditSettingsPlatformForm = () => {
                           ) : (
                             <Input
                               type="text"
-                              placeholder="Введите Access Key хранилища"
+                              placeholder="Enter the storage Access Key"
                               {...field}
                             />
                           )}
@@ -268,7 +267,7 @@ export const EditSettingsPlatformForm = () => {
                 <div className="flex flex-col gap-y-1 min-w-96 mb-2 lg:mb-0">
                   <h6 className="text-sm font-bold">Secret Key</h6>
                   <p className="text-sm text-gray-700 dark:text-gray-300">
-                    Укажите secret key для доступа к вашему хранилищу S3
+                    Specify the secret key to access your S3 storage
                   </p>
                 </div>
                 <div className="flex flex-col gap-y-1 min-w-96 mb-2 lg:mb-0">
@@ -283,7 +282,7 @@ export const EditSettingsPlatformForm = () => {
                           ) : (
                             <Input
                               type="text"
-                              placeholder="Введите Secret Key хранилища"
+                              placeholder="Enter the storage Secret Key"
                               {...field}
                             />
                           )}
@@ -308,7 +307,7 @@ export const EditSettingsPlatformForm = () => {
                 <h6 className="text-sm font-bold">CurseForge Api Key</h6>
               </div>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Для автоматической загрузки модов из CurseForge.
+                To automatically download mods from CurseForge.
               </p>
             </div>
             <div className="flex flex-col w-1/2">
@@ -321,7 +320,7 @@ export const EditSettingsPlatformForm = () => {
                       {isLoading ? (
                         <Skeleton className="w-full h-[88px]" />
                       ) : (
-                        <Input type="text" placeholder="Введите API Key" {...field} />
+                        <Input type="text" placeholder="Enter API Key" {...field} />
                       )}
                     </FormControl>
                     {!isLoading && (
@@ -333,7 +332,7 @@ export const EditSettingsPlatformForm = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Получить Api Key
+                            Get Api Key
                           </a>
                         </Button>
                       </>
@@ -348,10 +347,10 @@ export const EditSettingsPlatformForm = () => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <div className="flex flex-row items-center gap-x-1 mb-2">
                 <Image src={vk} alt="VK" className="w-4 h-4" />
-                <h6 className="text-sm font-bold">Вконтакте Api Key</h6>
+                <h6 className="text-sm font-bold">VK Api Key</h6>
               </div>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Для автоматической загрузки новостей из VK.
+                To automatically download news from VK.
               </p>
             </div>
             <div className="flex flex-col w-1/2">
@@ -364,7 +363,7 @@ export const EditSettingsPlatformForm = () => {
                       {isLoading ? (
                         <Skeleton className="w-full h-[88px]" />
                       ) : (
-                        <Input type="text" placeholder="Введите API Key" {...field} />
+                        <Input type="text" placeholder="Enter API Key" {...field} />
                       )}
                     </FormControl>
                     {!isLoading && (
@@ -376,7 +375,7 @@ export const EditSettingsPlatformForm = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            Получить Api Key
+                            Get Api Key
                           </a>
                         </Button>
                       </>
@@ -393,7 +392,7 @@ export const EditSettingsPlatformForm = () => {
             ) : (
               <Button disabled={isPending || form.formState.disabled || !form.formState.isDirty}>
                 {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-                Сохранить
+                Save
               </Button>
             )}
           </div>

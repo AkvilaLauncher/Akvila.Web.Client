@@ -31,8 +31,8 @@ export const useClearNotifications = () => {
       clearNotifications();
       clearCount();
       queryClient.removeQueries({ queryKey: notificationsKeys.all });
-      toast.success('Успешно', {
-        description: `Все уведомления были очищены`,
+      toast.success('Successful', {
+        description: `All notifications have been cleared`,
       });
     },
     onError: (error) => {

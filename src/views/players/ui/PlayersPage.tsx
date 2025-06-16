@@ -8,8 +8,8 @@ export const PlayersPage = () => {
   return (
     <>
       <Breadcrumbs
-        current={'Игроки'}
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        current={'Players'}
+        breadcrumbs={[{ value: 'Home', path: DASHBOARD_PAGES.HOME }]}
       />
 
       <PlayersTable />

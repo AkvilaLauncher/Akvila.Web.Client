@@ -36,18 +36,18 @@ export const ClearNotificationModel = ({
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Предупреждение</AlertDialogTitle>
+          <AlertDialogTitle>Warning</AlertDialogTitle>
           <AlertDialogDescription>
-            Вы собираетесь очистить все уведомления. Это действие необратимо и все ваши уведомления
-            будут удалены. Вы уверены, что хотите продолжить?
+            You are about to clear all notifications. This action is irreversible and all your
+            notifications will be deleted. Are you sure you want to continue?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={isPending}>
-            {isPending ? <></> : <>Отменить</>}
+            {isPending ? <></> : <>Cancel</>}
           </AlertDialogCancel>
           <AlertDialogAction onClick={onSubmit} disabled={isPending}>
-            Продолжить
+            Continue
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

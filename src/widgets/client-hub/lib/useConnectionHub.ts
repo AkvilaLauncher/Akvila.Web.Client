@@ -103,8 +103,8 @@ export const useConnectionHub = (props: ConnectionHubProps) => {
             setPercentStage(0);
             setPercentAllStages(0);
             setLogs(null);
-            toast.success('Успешно', {
-              description: `Профиль ${profileName} успешно загружен`,
+            toast.success('Successful', {
+              description: `Profile ${profileName} successfully loaded`,
             });
           }
         });
@@ -118,8 +118,8 @@ export const useConnectionHub = (props: ConnectionHubProps) => {
             setLogs(null);
           }
 
-          toast.success('Успешно', {
-            description: `Профиль ${profileName} успешно собран`,
+          toast.success('Successful', {
+            description: `Profile ${profileName} successfully compiled`,
           });
         });
       } catch (error) {
@@ -144,7 +144,7 @@ export const useConnectionHub = (props: ConnectionHubProps) => {
         setIsConnected(true);
       })
       .catch((error) => {
-        toast.error('Ошибка', {
+        toast.error('Error', {
           description: JSON.stringify(error),
         });
 
@@ -168,7 +168,7 @@ export const useConnectionHub = (props: ConnectionHubProps) => {
         setIsConnected(true);
       })
       .catch((error) => {
-        toast.error('Ошибка', {
+        toast.error('Error', {
           description: JSON.stringify(error),
         });
 
@@ -192,7 +192,7 @@ export const useConnectionHub = (props: ConnectionHubProps) => {
         setIsConnected(true);
       })
       .catch((error) => {
-        toast.error('Ошибка', {
+        toast.error('Error', {
           description: JSON.stringify(error),
         });
 

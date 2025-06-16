@@ -10,7 +10,7 @@ export const SentryAnalyticsScheme = z.object({
     })
     .refine(
       (data) => data.dateFrom > addDays(new Date(), -1),
-      'Дата начала должна быть в будущем.',
+      'The start date must be in the future.',
     ),
 });
 

@@ -81,9 +81,9 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
         <div className="flex flex-col gap-y-8 w-full lg:w-[58rem]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Состояние</h6>
+              <h6 className="text-sm font-bold">Status</h6>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Отображение профиля в лаунчере
+                Profile display in the launcher
               </p>
             </div>
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
@@ -98,15 +98,11 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Название</h6>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Отображается в директории</p>
+              <h6 className="text-sm font-bold">Name</h6>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Displayed in the directory</p>
             </div>
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <Input
-                type="text"
-                placeholder="Введите название профиля"
-                {...form.register('name')}
-              />
+              <Input type="text" placeholder="Enter a profile name" {...form.register('name')} />
               {form.formState.errors.name && (
                 <FormMessage>{form.formState.errors.name.message?.toString()}</FormMessage>
               )}
@@ -114,15 +110,13 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Отображаемое имя</h6>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                Отображается в лаунчере, профиле
-              </p>
+              <h6 className="text-sm font-bold">Display name</h6>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Displayed in launcher</p>
             </div>
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
               <Input
                 type="text"
-                placeholder="Введите отображаемое имя"
+                placeholder="Enter display name"
                 {...form.register('displayName')}
               />
               {form.formState.errors.displayName && (
@@ -132,15 +126,15 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Описание</h6>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Отображается в лаунчере</p>
+              <h6 className="text-sm font-bold">Description</h6>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Displayed in launcher</p>
             </div>
             <div className="flex flex-col items-end gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                {form.watch('description')?.length} из 255
+                {form.watch('description')?.length} of 1000
               </p>
               <Textarea
-                placeholder="Введите описание сервера"
+                placeholder="Enter a server description"
                 rows={5}
                 {...form.register('description')}
               />
@@ -151,15 +145,15 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Jvm Аргументы</h6>
+              <h6 className="text-sm font-bold">Jvm Arguments</h6>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Параметры запуска виртуальной Java машины
+                Java virtual machine startup parameters
               </p>
             </div>
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
               <Input
                 type="text"
-                placeholder="Введите ваши jvm аргументы"
+                placeholder="Enter your jvm arguments"
                 {...form.register('jvmArguments')}
               />
               {form.formState.errors.jvmArguments && (
@@ -169,13 +163,13 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Game Аргументы</h6>
-              <p className="text-sm text-gray-700 dark:text-gray-300">Параметры запуска клиента</p>
+              <h6 className="text-sm font-bold">Game Arguments</h6>
+              <p className="text-sm text-gray-700 dark:text-gray-300">Client startup parameters</p>
             </div>
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
               <Input
                 type="text"
-                placeholder="Введите ваши game аргументы"
+                placeholder="Enter your game arguments"
                 {...form.register('gameArguments')}
               />
               {form.formState.errors.gameArguments && (
@@ -185,13 +179,13 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <h6 className="text-sm font-bold">Приоритет</h6>
+              <h6 className="text-sm font-bold">Priority</h6>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Чем выше число, тем выше профиль в списке
+                The higher the number, the higher the profile in the list
               </p>
             </div>
             <div className="flex flex-col gap-y-1 w-full md:min-w-96 mb-2 lg:mb-0">
-              <Input type="number" placeholder="Смените приоритет" {...form.register('priority')} />
+              <Input type="number" placeholder="Change priority" {...form.register('priority')} />
               {form.formState.errors.priority && (
                 <FormMessage>{form.formState.errors.priority.message?.toString()}</FormMessage>
               )}
@@ -200,7 +194,7 @@ export const EditProfileForm = (props: EditProfileFormProps) => {
           <div className="flex justify-end">
             <Button disabled={isPending || form.formState.disabled || !form.formState.isDirty}>
               {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-              Сохранить
+              Save
             </Button>
           </div>
         </div>

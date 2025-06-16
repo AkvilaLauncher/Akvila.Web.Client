@@ -73,13 +73,13 @@ export function PlayersTable() {
           <form onSubmit={onSubmit} className="flex gap-4">
             <Input
               type="text"
-              placeholder="Поиск по нику"
+              placeholder="Nickname search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
             <Button type="submit" variant="outline" className="gap-2">
               <SearchIcon size={16} />
-              Найти
+              Find
             </Button>
           </form>
           {players && (
@@ -112,7 +112,7 @@ export function PlayersTable() {
                   ) : (
                     <TableRow>
                       <TableCell colSpan={columns.length} className="h-24 text-center">
-                        Нет данных.
+                        No data.
                       </TableCell>
                     </TableRow>
                   )}

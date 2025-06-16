@@ -43,7 +43,7 @@ export function SocialNetworkComponent({
     <div className="relative flex items-start justify-center" key={social.name}>
       {!social.visible && (
         <Card className="absolute z-50 items-center justify-center mt-7">
-          <CardHeader className="font-bold text-xl">Недоступно</CardHeader>
+          <CardHeader className="font-bold text-xl">Unavailable</CardHeader>
         </Card>
       )}
       <Card
@@ -77,7 +77,7 @@ export function SocialNetworkComponent({
                   <Input type="text" placeholder={social.descriptionUrl} />
                 )}
                 <Button variant="secondary" className="w-full">
-                  Сохранить
+                  Save
                 </Button>
                 <div className="flex justify-center mt-2">
                   {social.tokenGenerateUrl && (
@@ -87,7 +87,7 @@ export function SocialNetworkComponent({
                         target="_blank"
                         className="underline text-sm flex items-end"
                       >
-                        Получить токен
+                        Get token
                         <MoveUpRight size={16} className="ml-1" />
                       </Link>
                     </div>

@@ -19,11 +19,11 @@ export function CreateProfileDialog() {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
-        <Button className="w-fit">Создать профиль</Button>
+        <Button className="w-fit">Create profile</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="mb-4">Создание профиля</DialogTitle>
+          <DialogTitle className="mb-4">Profile creation</DialogTitle>
           <CreateProfileForm onModalToggle={onOpenChange} />
         </DialogHeader>
       </DialogContent>

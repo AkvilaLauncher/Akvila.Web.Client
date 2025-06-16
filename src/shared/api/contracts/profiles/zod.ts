@@ -3,32 +3,32 @@ import { z } from 'zod';
 export const ModDetailsEntitySchema = z.object({
   title: z
     .string()
-    .min(2, { message: 'Название мода должно быть больше 2 символов' })
-    .max(100, { message: 'Название мода не должно быть больше 100 символов' }),
+    .min(2, { message: 'Mod name must be longer than 2 characters' })
+    .max(100, { message: 'Mod name must not be more than 100 characters' }),
   description: z
     .string()
-    .min(2, { message: 'Описание мода должно быть больше 2 символов' })
-    .max(1000, { message: 'Описание мода не должно быть больше 1000 символов' }),
+    .min(2, { message: 'Mod description must be longer than 2 characters' })
+    .max(1000, { message: 'Mod description must not be more than 1000 characters' }),
 });
 
 export const CreateProfileSchema = z.object({
   name: z
     .string()
-    .min(2, { message: 'Длина имени должна быть больше 2 символов' })
-    .max(100, { message: 'Длина имени не должна быть больше 100 символов' }),
+    .min(2, { message: 'Name must be longer than 2 characters' })
+    .max(100, { message: 'Name must not be more than 100 characters' }),
   displayName: z
     .string()
-    .min(2, { message: 'Длина имени должна быть больше 2 символов' })
-    .max(100, { message: 'Длина имени не должна быть больше 100 символов' }),
+    .min(2, { message: 'Name must be longer than 2 characters' })
+    .max(100, { message: 'Name must not be more than 100 characters' }),
   description: z
     .string()
-    .min(2, { message: 'Длина описания должна быть больше 2 символов' })
+    .min(2, { message: 'Description must be longer than 2 characters' })
     .max(1000, {
-      message: 'Длина описания не должна быть больше 1000 символов',
+      message: 'Description must no be longer more than 1000 characters',
     }),
   version: z.string({
     errorMap: () => ({
-      message: 'Не выбрана версия игры',
+      message: 'Game version not selected',
     }),
   }),
   loaderVersion: z.string().optional(),
@@ -39,17 +39,17 @@ export const CreateProfileSchema = z.object({
 export const EditProfileSchema = z.object({
   name: z
     .string()
-    .min(2, { message: 'Длина имени должна быть больше 2 символов' })
-    .max(100, { message: 'Длина имени не должна быть больше 100 символов' }),
+    .min(2, { message: 'Name must be longer than 2 characters' })
+    .max(100, { message: 'Name must not be more than 100 characters' }),
   displayName: z
     .string()
-    .min(2, { message: 'Длина имени должна быть больше 2 символов' })
-    .max(100, { message: 'Длина имени не должна быть больше 100 символов' }),
+    .min(2, { message: 'Name must be longer than 2 characters' })
+    .max(100, { message: 'Name must not be more than 100 characters' }),
   description: z
     .string()
-    .min(2, { message: 'Длина описания должна быть больше 2 символов' })
-    .max(255, {
-      message: 'Длина описания не должна быть больше 255 символов',
+    .min(2, { message: 'Description must be longer than 2 characters' })
+    .max(1000, {
+      message: 'Description must no be longer more than 1000 characters',
     }),
   jvmArguments: z.string().optional(),
   gameArguments: z.string().optional(),

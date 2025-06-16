@@ -45,6 +45,7 @@ export const CreateGameServerDialog = ({ profile }: AddGameServerDialogParams) =
 
     form.reset();
     onOpenChange();
+    window.location.reload(); //TODO: update server list without reloading the page
   };
 
   return (
@@ -52,39 +53,39 @@ export const CreateGameServerDialog = ({ profile }: AddGameServerDialogParams) =
       <DialogTrigger asChild>
         <Button className="w-fit gap-2">
           <PlusIcon width={16} height={16} />
-          Добавить сервер
+          Add server
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Добавление сервера</DialogTitle>
+          <DialogTitle>Adding a server</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form className="grid gap-y-4" onSubmit={form.handleSubmit(onSubmit)}>
             <FormItem>
-              <FormLabel>Введите название сервера</FormLabel>
+              <FormLabel>Enter server name</FormLabel>
               <FormControl>
-                <Input placeholder="Введите название сервера" {...form.register('name')} />
+                <Input placeholder="Enter server name" {...form.register('name')} />
               </FormControl>
               {form.formState.errors.name && (
                 <FormMessage>{form.formState.errors.name.message}</FormMessage>
               )}
             </FormItem>
             <FormItem>
-              <FormLabel>Введите адрес сервера</FormLabel>
+              <FormLabel>Enter the server address</FormLabel>
               <FormControl>
-                <Input placeholder="Введите адрес сервера" {...form.register('address')} />
+                <Input placeholder="Enter the server address" {...form.register('address')} />
               </FormControl>
               {form.formState.errors.address && (
                 <FormMessage>{form.formState.errors.address.message}</FormMessage>
               )}
             </FormItem>
             <FormItem>
-              <FormLabel>Введите порт сервера</FormLabel>
+              <FormLabel>Enter the server port</FormLabel>
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Введите порт сервера"
+                  placeholder="Enter the server port"
                   {...form.register('port', { valueAsNumber: true })}
                 />
               </FormControl>
@@ -95,7 +96,7 @@ export const CreateGameServerDialog = ({ profile }: AddGameServerDialogParams) =
             <div className="flex justify-end">
               <Button disabled={isPending || !form.formState.isDirty}>
                 {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-                Создать
+                Create
               </Button>
             </div>
           </form>

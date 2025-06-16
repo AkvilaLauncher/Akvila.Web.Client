@@ -15,9 +15,9 @@ export const ProfileLoading = () => {
       <Breadcrumbs
         current={'...'}
         breadcrumbs={[
-          { value: 'Главная', path: DASHBOARD_PAGES.HOME },
+          { value: 'Home', path: DASHBOARD_PAGES.HOME },
           {
-            value: 'Профили',
+            value: 'Profiles',
             path: DASHBOARD_PAGES.PROFILES,
           },
         ]}

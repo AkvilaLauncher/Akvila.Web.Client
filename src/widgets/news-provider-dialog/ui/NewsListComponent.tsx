@@ -29,9 +29,9 @@ export function NewsListComponent() {
           <NewspaperIcon className="h-6 w-6 text-muted-foreground" />
         </div>
         <div className="text-center">
-          <p className="text-sm font-medium">Новостей нет</p>
+          <p className="text-sm font-medium">There&apos;s no news.</p>
           <p className="text-xs text-muted-foreground mt-1">
-            Добавьте провайдер новостей на вкладке &quot;Подключение&quot;
+            Add a news provider on the &quot;Connection&quot; tab
           </p>
         </div>
       </div>

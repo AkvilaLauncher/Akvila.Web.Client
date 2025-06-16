@@ -6,7 +6,7 @@ import { Checkbox } from '@/shared/ui/checkbox';
 import { DataTableColumnHeader } from '@/entities/Table';
 
 enum ColumnHeader {
-  PATH = 'Путь к папке',
+  PATH = 'Folder Path',
 }
 
 export const columnsHelper = createColumnHelper<ProfileFolderBaseEntity>();
@@ -22,16 +22,16 @@ export const useColumns = () => {
             (table.getIsSomePageRowsSelected() && 'indeterminate')
           }
           onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Выбрать все строки"
-          className="translate-y-[2px]"
+          aria-label="Select all rows"
+          className="translate-y-[1px]"
         />
       ),
       cell: ({ row }) => (
         <Checkbox
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Выбрать строку"
-          className="translate-y-[2px]"
+          aria-label="Select row"
+          className="translate-y-[-3px]"
         />
       ),
       enableSorting: false,

@@ -66,27 +66,27 @@ export const AddingFoldersWhitelistDialog = ({
       <DialogTrigger asChild>
         <Button className="w-fit gap-2">
           <PlusIcon width={16} height={16} />
-          Добавить папки
+          Add folder
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[1200px] max-h-[calc(100vh-theme(spacing.16))] overflow-auto">
         <DialogHeader>
-          <DialogTitle>Добавление папок в «Белый список»</DialogTitle>
+          <DialogTitle>Adding folders to the Whitelist</DialogTitle>
         </DialogHeader>
         <Tabs defaultValue="folders" value={tab}>
           <TabsContent value="folders" className="grid gap-y-2">
             <div className="flex gap-x-4">
               <Input
-                placeholder="Введите путь до папки"
+                placeholder="Enter the path to the folder"
                 onChange={(event) => handleChangeFolder(event.target.value)}
               />
               <Button onClick={() => handleAppendFolder(folder)} disabled={folder == ''}>
-                Добавить
+                Add
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              Будет исключена: C:/Users/test/AppData/Roaming/
-              {'{НазваниеВашегоЛаунчера}'}/clients/
+              Will be excluded: C:/Users/test/AppData/Roaming/
+              {'{YourLauncherName}'}/clients/
               {profileName}/{folder}
             </p>
             <ul className="max-h-[200px] overflow-y-scroll">
@@ -107,7 +107,7 @@ export const AddingFoldersWhitelistDialog = ({
               {folders.length == 0 && (
                 <li className="flex gap-x-2 py-12 px-2 justify-center">
                   <p className="text-sm text-muted-foreground">
-                    Список пуст. Добавьте хотя бы одну папку.
+                    The list is empty. Add at least one folder.
                   </p>
                 </li>
               )}
@@ -116,17 +116,16 @@ export const AddingFoldersWhitelistDialog = ({
           <TabsContent value="checkout">
             <Alert variant="destructive">
               <ExclamationTriangleIcon className="h-4 w-4" />
-              <AlertTitle>Внимание!</AlertTitle>
+              <AlertTitle>Warning!</AlertTitle>
               <AlertDescription>
-                Вы выбрали <strong>{folders.length}</strong> папок, которые будут добавлены в
-                WhiteList
+                You have selected <strong>{folders.length}</strong> folders to be added to WhiteList
               </AlertDescription>
             </Alert>
           </TabsContent>
         </Tabs>
         <div className="flex justify-end gap-x-4">
           <Button className="w-fit" onClick={onChangeTab('folders')} disabled={tab === 'folders'}>
-            Назад
+            Back
           </Button>
           {tab === 'folders' && (
             <Button
@@ -134,12 +133,12 @@ export const AddingFoldersWhitelistDialog = ({
               onClick={onChangeTab('checkout')}
               disabled={folders.length == 0}
             >
-              Далее
+              Next
             </Button>
           )}
           {tab === 'checkout' && (
             <Button className="w-fit" onClick={onSubmit}>
-              Добавить
+              Add
             </Button>
           )}
         </div>

@@ -40,8 +40,8 @@ export const useBanPlayer = () => {
     mutationFn: (data: TPostBanPlayersRequest) => playersService.banPlayer(data),
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: playersKeys.all });
-      toast.success('Успешно', {
-        description: `Пользователь заблокирован`,
+      toast.success('Successful', {
+        description: `User banned`,
       });
     },
     onError: (error) => {
@@ -58,8 +58,8 @@ export const useRemoveUser = () => {
     mutationFn: (data: TPostRemovePlayersRequest) => playersService.removePlayer(data),
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: playersKeys.all });
-      toast.success('Успешно', {
-        description: `Пользователь удален`,
+      toast.success('Successful', {
+        description: `User deleted`,
       });
     },
     onError: (error) => {
@@ -76,8 +76,8 @@ export const usePardonPlayer = () => {
     mutationFn: (data: TPostBanPlayersRequest) => playersService.pardonPlayer(data),
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: playersKeys.all });
-      toast.success('Успешно', {
-        description: `Пользователь разблокирован`,
+      toast.success('Successful', {
+        description: `User unbanned`,
       });
     },
     onError: (error) => {

@@ -29,9 +29,9 @@ export function SignInForm({ className, ...props }: SignInFormProps) {
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem>
-            <FormLabel>Введите логин</FormLabel>
+            <FormLabel>Enter login</FormLabel>
             <FormControl>
-              <Input placeholder="Введите логин" {...form.register('login')} />
+              <Input placeholder="Enter login" {...form.register('login')} />
             </FormControl>
             {form.formState.errors.login && (
               <FormMessage>{form.formState.errors.login.message}</FormMessage>
@@ -39,9 +39,9 @@ export function SignInForm({ className, ...props }: SignInFormProps) {
           </FormItem>
 
           <FormItem>
-            <FormLabel>Введите пароль</FormLabel>
+            <FormLabel>Enter password</FormLabel>
             <FormControl>
-              <Input type="password" placeholder="Введите пароль" {...form.register('password')} />
+              <Input type="password" placeholder="Enter password" {...form.register('password')} />
             </FormControl>
             {form.formState.errors.password && (
               <FormMessage>{form.formState.errors.password.message}</FormMessage>
@@ -50,7 +50,7 @@ export function SignInForm({ className, ...props }: SignInFormProps) {
 
           <Button className="w-full" disabled={isPending}>
             {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-            Войти
+            Sign in
           </Button>
         </form>
       </Form>

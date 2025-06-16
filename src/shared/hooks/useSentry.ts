@@ -67,7 +67,7 @@ export const useSolveSentryErrors = () => {
     mutationKey: sentryKeys.summary(),
     mutationFn: () => sentryService.solveSentryErrors(),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.message,
       });
     },

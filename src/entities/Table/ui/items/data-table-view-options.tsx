@@ -23,11 +23,11 @@ export function DataTableViewOptions<TData>({ table }: DataTableViewOptionsProps
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="ml-auto hidden h-8 lg:flex">
           <MixerHorizontalIcon className="mr-2 h-4 w-4" />
-          Обзор
+          Overview
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[250px]">
-        <DropdownMenuLabel>Управление колонками</DropdownMenuLabel>
+        <DropdownMenuLabel>Columns control</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table
           .getAllColumns()

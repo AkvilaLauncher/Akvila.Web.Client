@@ -146,13 +146,13 @@ export const SentryAnalytics = () => {
   const copyText = async (content: string) => {
     try {
       await navigator.clipboard.writeText(content);
-      toast('Текст успешно скопирован', {
-        duration: 500,
+      toast('Text successfully copied', {
+        duration: 1000,
         onAutoClose: () => true,
       });
     } catch (error) {
       console.error(error);
-      toast('Ошибка копирования. Подробности в консоли браузера', {
+      toast('Copy Error. Details in the browser console', {
         duration: 2000,
       });
     }
@@ -166,18 +166,20 @@ export const SentryAnalytics = () => {
             <div className="flex items-center mb-4">
               <TabsList>
                 <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_FIVE_MINUTES}>
-                  За 5 минут
+                  In 5 minutes
                 </TabsTrigger>
                 <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_THIRTY_MINUTES}>
-                  За полчаса
+                  In 30 minutes
                 </TabsTrigger>
-                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_HOUR}>За час</TabsTrigger>
-                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_WEAK}>Неделя</TabsTrigger>
-                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_MONTH}>Месяц</TabsTrigger>
-                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_YEAR}>Год</TabsTrigger>
+                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_HOUR}>
+                  In an hour
+                </TabsTrigger>
+                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_WEAK}>Week</TabsTrigger>
+                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_MONTH}>Month</TabsTrigger>
+                <TabsTrigger value={AnalyticsInterval.ANALYTICS_INTERVAL_YEAR}>Year</TabsTrigger>
                 <Separator orientation="vertical" className="mx-3 bg-primary h-1/2" />
                 <TabsTrigger className="relative" value={AnalyticsInterval.ANALYTICS_INTERVAL_GAP}>
-                  Промежуток
+                  Interval
                   <DatePickerWithRange
                     className={cn('absolute left-32', {
                       hidden: tab !== AnalyticsInterval.ANALYTICS_INTERVAL_GAP,
@@ -211,8 +213,10 @@ export const SentryAnalytics = () => {
           {data && !data.data.data.length && (
             <Card>
               <CardHeader className="px-7">
-                <CardTitle>Нет данных</CardTitle>
-                <CardDescription>Данных нет, либо нет данных по указанным фильтрам</CardDescription>
+                <CardTitle>No data</CardTitle>
+                <CardDescription>
+                  No data available or no data for the specified filters
+                </CardDescription>
               </CardHeader>
             </Card>
           )}
@@ -220,18 +224,16 @@ export const SentryAnalytics = () => {
           {data && data.data.data && data.data.data.length > 0 && (
             <Card>
               <CardHeader className="px-7">
-                <CardTitle>Проблемы</CardTitle>
-                <CardDescription>
-                  На данной странице представлены самые популярные проблемы
-                </CardDescription>
+                <CardTitle>Problems</CardTitle>
+                <CardDescription>This page presents the most popular problems</CardDescription>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Ошибка</TableHead>
-                      <TableHead>У скольки пользователей</TableHead>
-                      <TableHead>Количество повторений</TableHead>
+                      <TableHead>Errors</TableHead>
+                      <TableHead>How many users</TableHead>
+                      <TableHead>Number of repetitions</TableHead>
                       {/*<TableHead>График</TableHead>*/}
                     </TableRow>
                   </TableHeader>
@@ -267,7 +269,7 @@ export const SentryAnalytics = () => {
                                       <Card className="w-full md:w-[50%]">
                                         <CardHeader className="pb-0 text-gray-700 dark:text-gray-400">
                                           <Monitor size={24} className="mb-3" />
-                                          Имя устройства
+                                          Device name
                                         </CardHeader>
                                         <CardFooter>
                                           {bug.bugInfo.username} / {bug.bugInfo.pcName} -{' '}
@@ -277,7 +279,7 @@ export const SentryAnalytics = () => {
                                       <Card className="w-full md:w-[50%]">
                                         <CardHeader className="pb-0 text-gray-700 dark:text-gray-400">
                                           <MemoryStick size={24} className="mb-3" />
-                                          Зарезервированная память
+                                          Reserved memory
                                         </CardHeader>
                                         <CardFooter className="gap-3">
                                           {(bug.bugInfo.memoryInfo.totalAvailableMemoryBytes === 0
@@ -317,16 +319,16 @@ export const SentryAnalytics = () => {
                                       <Card className="w-full md:w-[50%]">
                                         <CardHeader className="pb-0 text-gray-700 dark:text-gray-400">
                                           <ReceiptText size={24} className="mb-3" />
-                                          Детали
+                                          Details
                                         </CardHeader>
                                         <CardFooter>
                                           <div className="flex flex-col gap-2">
                                             <p>
-                                              Адрес:
+                                              Address:
                                               {bug.bugInfo.ipAddress}
                                             </p>
                                             <p>
-                                              Вызвало краш:
+                                              Caused a crash:
                                               <span
                                                 className={`text-lg ${!bug.bugInfo.exceptions[0].crashed ? 'text-red-500' : 'text-green-500'}`}
                                               >
@@ -334,7 +336,7 @@ export const SentryAnalytics = () => {
                                               </span>
                                             </p>
                                             <p>
-                                              Текущее приложение:
+                                              Current application:
                                               <span
                                                 className={`text-lg ${bug.bugInfo.exceptions[0].current ? 'text-red-500' : 'text-green-500'}`}
                                               >
@@ -350,8 +352,8 @@ export const SentryAnalytics = () => {
                                       onClick={() => void copyText(bug.stackTrace)}
                                       variant="secondary"
                                     >
-                                      <CopyIcon />
-                                      Копировать всё
+                                      <CopyIcon className="mr-2" />
+                                      Copy all
                                     </Button>
                                   </AccordionContent>
                                 </AccordionItem>

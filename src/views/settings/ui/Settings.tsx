@@ -9,11 +9,11 @@ export const SettingsPage = () => {
   return (
     <>
       <Breadcrumbs
-        current="Настройки"
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        current="Settings"
+        breadcrumbs={[{ value: 'Main', path: DASHBOARD_PAGES.HOME }]}
       />
       <div className="mx-auto grid w-full gap-2">
-        <h1 className="text-3xl font-semibold">Настройки</h1>
+        <h1 className="text-3xl font-semibold">Settings</h1>
       </div>
       <div className="mx-auto grid w-full items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
         <Tabs
@@ -24,7 +24,7 @@ export const SettingsPage = () => {
         >
           <TabsList className="flex-col h-auto items-start min-w-44" defaultValue="main">
             <TabsTrigger className="w-full h-10" value="settings">
-              Основные
+              Platform Settings
             </TabsTrigger>
           </TabsList>
           <TabsContent className="w-full" value="settings">

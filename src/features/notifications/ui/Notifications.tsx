@@ -41,13 +41,15 @@ export const Notifications = () => {
         <Button variant="secondary" size="icon" className="rounded-full relative">
           <BellIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <BellIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Уведомления</span>
-          <Badge
-            variant="default"
-            className="absolute py-1 px-2 font-semibold top-[-3px] right-[-8px] min-h-[26px]"
-          >
-            {count}
-          </Badge>
+          <span className="sr-only">Notifications</span>
+          {count !== 0 ? (
+            <Badge
+              variant="default"
+              className="absolute py-1 px-2 font-semibold top-[-3px] right-[-8px] min-h-[26px]"
+            >
+              {count}
+            </Badge>
+          ) : null}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[450px] max-w-[450px]">
@@ -55,16 +57,14 @@ export const Notifications = () => {
           <div className="px-3 py-3 text-sm font-normal">
             <div className="flex flex-col space-y-2">
               <p className="flex items-center gap-x-2 text-sm font-medium leading-none">
-                Уведомления
+                Notifications
                 <Badge variant="secondary">{count}</Badge>
               </p>
-              <p className="text-sm leading-none text-muted-foreground">
-                Список уведомлений системы
-              </p>
+              <p className="text-sm leading-none text-muted-foreground">System notification list</p>
             </div>
           </div>
-          <div className="absolute top-auto right-4">
-            <ClearNotificationModel description={'Прочитать все'} />
+          <div className="absolute top-auto right-14 md:right-4">
+            <ClearNotificationModel description={'Read all'} />
           </div>
         </div>
         <DropdownMenuSeparator />
@@ -83,7 +83,7 @@ export const Notifications = () => {
                       <span className="text-base font-semibold">{message}</span>
                     </div>
                     <span className="text-sm text-gray-400 truncate max-h-10 text-wrap w-[calc(100%-24px)]">
-                      {details ? details : 'Детали отсутствуют'}
+                      {details ? details : 'No details'}
                     </span>
                     <Tooltip>
                       <TooltipTrigger>
@@ -99,7 +99,7 @@ export const Notifications = () => {
               ))
           ) : (
             <p className="text-sm text-center leading-none text-muted-foreground">
-              У вас нет уведомлений
+              You don&apos;t have any notifications
             </p>
           )}
         </div>
@@ -107,7 +107,7 @@ export const Notifications = () => {
           className="flex items-center justify-center w-full min-h-14 underline dark:text-gray-300 text-gray-600"
           href={DASHBOARD_PAGES.NOTIFICATION}
         >
-          Показать все
+          Show all
         </Link>
       </DropdownMenuContent>
     </DropdownMenu>

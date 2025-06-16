@@ -58,23 +58,23 @@ export function AuthenticationFormDle({ className, onOpenChange, ...props }: Sig
       <Form {...form}>
         <form className="flex flex-col space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem>
-            <FormLabel>Введите эндпоинт</FormLabel>
+            <FormLabel>Enter endpoint</FormLabel>
             <FormControl>
-              <Input placeholder="Введите эндпоинт" {...form.register('endpoint')} />
+              <Input placeholder="Enter endpoint" {...form.register('endpoint')} />
             </FormControl>
 
             {form.formState.errors.endpoint ? (
               <FormMessage>{form.formState.errors.endpoint.message}</FormMessage>
             ) : (
               <FormDescription>
-                Не знаете где взять файл auth.php?{' '}
+                Don&apos;t know where to get the auth.php file?{' '}
                 <a
                   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   href={HREF_GET_DATALIFE_ENGINE_AUTH_PHP}
                   target="_blank"
                   download="auth.php"
                 >
-                  Скачайте по ссылке
+                  Download by clicking here
                 </a>
               </FormDescription>
             )}
@@ -85,7 +85,7 @@ export function AuthenticationFormDle({ className, onOpenChange, ...props }: Sig
             disabled={isPending || !form.formState.isDirty}
           >
             {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-            Сохранить
+            Save
           </Button>
         </form>
       </Form>

@@ -6,21 +6,21 @@ import {
   ProfileExtendedBaseEntity,
 } from '@/shared/api/contracts';
 import { ResponseBaseEntity } from '@/shared/api/schemas';
-import { OsArchitectureEnum } from '@/shared/enums'; // Получение профилей
+import { OsArchitectureEnum } from '@/shared/enums';
 
-// Получение профилей
+// Getting profiles
 export type TGetProfilesRequest = {};
 export type TGetProfilesResponse = ResponseBaseEntity & {
   data: ProfileBaseEntity[];
 };
 
-// Создание профиля
+// Creating a profile
 export type TPostProfilesRequest = FormData;
 export type TPostProfilesResponse = ResponseBaseEntity & {
   data: Partial<ProfileBaseEntity>;
 };
 
-// Загрузка мода
+// Downloading the mod
 export type TPostLoadProfileModRequest = {
   profileName: string;
   isOptional: boolean;
@@ -28,7 +28,7 @@ export type TPostLoadProfileModRequest = {
 };
 export type TPostLoadProfileModResponse = ResponseBaseEntity;
 
-// Загрузка мода по Url
+// Downloading the mod by URL
 export type TPostLoadProfileModByUrlRequest = {
   profileName: string;
   isOptional: boolean;
@@ -37,7 +37,7 @@ export type TPostLoadProfileModByUrlRequest = {
 
 export type TPostLoadProfileModByUrlResponse = ResponseBaseEntity;
 
-// Получение профиля
+// Obtaining a profile
 export type TGetProfileRequest = {
   UserName: string;
   ProfileName: string;
@@ -58,27 +58,27 @@ export type TGetProfileResponse = ResponseBaseEntity & {
   data: ProfileExtendedBaseEntity;
 };
 
-// Редактирование профиля
+// Editing a profile
 export type TPutProfileRequest = FormData;
 export type TPutProfileResponse = ResponseBaseEntity & {
   data: ProfileBaseEntity;
 };
 
-// Удаление профиля
+// Deleting a profile
 export type TDeleteProfileRequest = {
   profileName: string;
   removeFiles: boolean;
 };
 export type TDeleteProfileResponse = ResponseBaseEntity & {};
 
-// Удаление мода
+// Removing a mod
 export type TRemoveProfileModRequest = {
   profileName: string;
   modName: string;
 };
 export type TRemoveProfileModResponse = ResponseBaseEntity & {};
 
-// Добавление игрока в профиль
+// Adding a player to a profile
 export type TAddPlayerToProfileRequest = {
   profileName: string;
   userUuid: string;
@@ -87,18 +87,18 @@ export type TAddPlayerToProfileResponse = ResponseBaseEntity & {
   data: PlayerBaseEntity;
 };
 
-// Удаление игрока в профиле
+// Deleting a player in a profile
 export type TDeletePlayerToProfileRequest = {};
 export type TDeletePlayerToProfileResponse = ResponseBaseEntity & {};
 
-// Удаление профилей
+// Deleting profiles
 export type TDeleteProfilesRequest = {
   profileNames: string;
   removeFiles: boolean;
 };
 export type TDeleteProfilesResponse = ResponseBaseEntity & {};
 
-// Получение списка версий
+// Getting the list of versions
 export type TGameVersionsRequest = {
   gameLoader: GameLoaderOption;
   minecraftVersion: string;
@@ -107,6 +107,7 @@ export type TGameVersionsResponse = ResponseBaseEntity & {
   data: string[];
 };
 
+// Getting the list of Java versions
 export type TJavaVersionsRequest = {};
 export type TJavaVersionsResponse = ResponseBaseEntity & {
   data: JavaVersionBaseEntity[];

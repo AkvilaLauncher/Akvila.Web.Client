@@ -66,10 +66,10 @@ export const GameMods = ({ profile }: GameServersParams) => {
       {canEditModsList && (
         <div className="absolute w-full h-full z-[10] flex items-center justify-center">
           <Card className="p-6 w-[50%]">
-            <CardHeader className="font-bold text-xl">Модификации недоступны</CardHeader>
+            <CardHeader className="font-bold text-xl">Mods not available</CardHeader>
             <CardContent className="content text-gray-700 dark:text-gray-300">
-              Система модификаций доступна только для активных профилей. Убедитесь, что у вас
-              активный профиль, а так же не имеет ошибок
+              The modification system is only available for active profiles. Refresh page and make
+              sure that you have active profile that also has no errors
             </CardContent>
           </Card>
         </div>
@@ -80,7 +80,7 @@ export const GameMods = ({ profile }: GameServersParams) => {
         })}
       >
         <div className="flex flex-col gap-3 w-[calc(100vw-35px)] md:w-full">
-          <div className="text-xl font-bold">Список модов</div>
+          <div className="text-xl font-bold">Mods list</div>
           <Table className="border border-dashed rounded-2xl">
             <TableBody>
               {mods &&
@@ -102,7 +102,7 @@ export const GameMods = ({ profile }: GameServersParams) => {
                     </TableCell>
                     <TableCell>
                       <Button variant="link" onClick={() => removeMod(`${mod?.name}.jar`)}>
-                        Удалить
+                        Delete
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -110,13 +110,13 @@ export const GameMods = ({ profile }: GameServersParams) => {
             </TableBody>
           </Table>
 
-          <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-row gap-2">
             <div className="flex gap-2">
               <Label
                 htmlFor="loadMod"
                 className="cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 w-max gap-2"
               >
-                Загрузить
+                Upload
                 <PlusIcon width={16} height={16} />
               </Label>
               <Input
@@ -133,7 +133,7 @@ export const GameMods = ({ profile }: GameServersParams) => {
           </div>
         </div>
         <div className="flex flex-col gap-3 w-[calc(100vw-35px)] md:w-full">
-          <div className="text-xl">Опциональные моды</div>
+          <div className="text-xl">Optional mods</div>
           <Table className="border border-dashed rounded-2xl overflow-x-hidden">
             <TableBody>
               {optionalMods &&
@@ -145,13 +145,13 @@ export const GameMods = ({ profile }: GameServersParams) => {
                 ))}
             </TableBody>
           </Table>
-          <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-row gap-2">
             <div className="flex gap-2">
               <Label
                 htmlFor="loadOptionalMod"
                 className="cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 w-max gap-2"
               >
-                Загрузить
+                Upload
                 <PlusIcon width={16} height={16} />
               </Label>
               <Input

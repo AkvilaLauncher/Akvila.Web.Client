@@ -205,7 +205,7 @@ export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(
                         multiSelectVariants({ variant }),
                       )}
                     >
-                      {`+ ${selectedValues.length - maxCount} более`}
+                      {`+ ${selectedValues.length - maxCount} more`}
                       <XCircle
                         className="ml-2 h-4 w-4 cursor-pointer"
                         onClick={(event) => {
@@ -244,9 +244,9 @@ export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(
           onEscapeKeyDown={() => setIsPopoverOpen(false)}
         >
           <Command>
-            <CommandInput placeholder="Поиск..." onKeyDown={handleInputKeyDown} />
+            <CommandInput placeholder="Search..." onKeyDown={handleInputKeyDown} />
             <CommandList>
-              <CommandEmpty>Ничего не найдено</CommandEmpty>
+              <CommandEmpty>Nothing found</CommandEmpty>
               <CommandGroup>
                 <CommandItem key="all" onSelect={toggleAll} className="cursor-pointer">
                   <div
@@ -259,7 +259,7 @@ export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(
                   >
                     <CheckIcon className="h-4 w-4" />
                   </div>
-                  <span>(Выбрать всё)</span>
+                  <span>(Select all)</span>
                 </CommandItem>
                 {options &&
                   options.map((option) => {
@@ -297,7 +297,7 @@ export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(
                         onSelect={handleClear}
                         className="flex-1 justify-center cursor-pointer"
                       >
-                        Очистить
+                        Clear
                       </CommandItem>
                       <Separator orientation="vertical" className="flex min-h-6 h-full" />
                     </>
@@ -307,7 +307,7 @@ export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(
                     onSelect={() => setIsPopoverOpen(false)}
                     className="flex-1 justify-center cursor-pointer"
                   >
-                    Закрыть
+                    Close
                   </CommandItem>
                 </div>
               </CommandGroup>

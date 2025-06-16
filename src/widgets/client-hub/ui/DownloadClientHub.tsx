@@ -84,18 +84,20 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
     <>
       <div className="flex flex-col gap-y-4">
         <h5 className="flex items-center gap-x-3 text-xl font-bold">
-          Управление
-          {!isConnected && <sup className="text-xs text-gray-400">Подключение к консоли...</sup>}
+          Management
+          {!isConnected && (
+            <sup className="text-xs text-gray-400">Connecting to the console...</sup>
+          )}
         </h5>
         <div className="grid grid-rows-3 grid-cols-1 xl:grid-rows-2 xl:grid-cols-2 min-[1920px]:grid-cols-[400px_400px_1fr] min-[1920px]:grid-rows-1 gap-6">
-          {/* Карточка 1 шаг */}
+          {/* Step 1 card */}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="flex flex-col h-full rounded-lg border bg-card text-card-foreground shadow-sm p-6 gap-3">
                 <div className="flex flex-col gap-y-1">
-                  <h6 className="text-xl font-bold">Шаг первый</h6>
+                  <h6 className="text-xl font-bold">Step one</h6>
                   <p className="text-sm text-gray-700 dark:text-gray-300">
-                    Необходимо загрузить клиент
+                    The client needs to be downloaded
                   </p>
                 </div>
 
@@ -104,7 +106,7 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
                   name="javaVersion"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Выберите версию Java</FormLabel>
+                      <FormLabel>Select the Java version</FormLabel>
                       <FormControl>
                         <Popover open={javaVersionsOpen} onOpenChange={onOpenJavaVersionsChange}>
                           <PopoverTrigger asChild>
@@ -116,16 +118,16 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
                               <span className="truncate grow mr-2 text-start">
                                 {field.value && (JSON.parse(field.value) as JavaVersionBaseEntity)
                                   ? `${(JSON.parse(field.value) as JavaVersionBaseEntity).name}@${(JSON.parse(field.value) as JavaVersionBaseEntity).version}`
-                                  : 'По умолчанию'}
+                                  : 'Default'}
                               </span>
                               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent>
                             <Command>
-                              <CommandInput placeholder="Поиск версий..." />
+                              <CommandInput placeholder="Version search..." />
                               <CommandList>
-                                <CommandEmpty>Версия не найдена</CommandEmpty>
+                                <CommandEmpty>Version not found</CommandEmpty>
                                 <CommandGroup>
                                   <CommandItem
                                     onSelect={() => {
@@ -135,9 +137,9 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
                                   >
                                     <div className="flex items-center gap-x-5">
                                       <div className="flex flex-col gap-y-1">
-                                        <span className="font-bold">По умолчанию</span>
+                                        <span className="font-bold">Default</span>
                                         <span className="text-muted-foreground">
-                                          На выбор сервера
+                                          Use default Java version
                                         </span>
                                       </div>
                                     </div>
@@ -185,20 +187,20 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
                   >
                     {isDisable && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
                     <ArrowBigDownDash width={16} height={16} className="mr-2" />
-                    Загрузить
+                    Download
                   </Button>
                 </div>
               </div>
             </form>
           </Form>
 
-          {/* Карточка 2 шаг */}
+          {/* Step 2 card */}
           <div className="flex flex-col rounded-lg text-card-foreground shadow-sm relative ">
             <div className="flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm justify-between p-6 gap-3 h-full">
               <div className="flex flex-col gap-y-1">
-                <h6 className="text-xl font-bold">Шаг второй</h6>
+                <h6 className="text-xl font-bold">Step two</h6>
                 <p className="text-sm text-gray-700 dark:text-gray-300">
-                  Необходимо собрать профиль
+                  The profile needs to be compiled
                 </p>
               </div>
 
@@ -209,25 +211,9 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
               >
                 {isDisable && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
                 <Package2Icon width={16} height={16} className="mr-2" />
-                Собрать
+                Compile
               </Button>
             </div>
-
-            {/*{props.profile && props.profile.state === EntityState.ENTITY_STATE_LOADING && (*/}
-            {/*  <div className="absolute w-full z-[10] flex items-center justify-center mt-12">*/}
-            {/*    <Card className="p-3 w-[80%]">*/}
-            {/*      <CardHeader className="font-bold text-xl">*/}
-            {/*        <div className="flex items-center gap3">*/}
-            {/*          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />*/}
-            {/*          <span>Сборка недоступна</span>*/}
-            {/*        </div>*/}
-            {/*      </CardHeader>*/}
-            {/*      <CardContent className="content text-gray-700 dark:text-gray-300">*/}
-            {/*        Во время загрузки сборка недоступна*/}
-            {/*      </CardContent>*/}
-            {/*    </Card>*/}
-            {/*  </div>*/}
-            {/*)}*/}
           </div>
 
           <div className="flex flex-col gap-y-4 col-span-1 xl:col-span-2 min-[1920px]:col-span-1">
@@ -247,7 +233,7 @@ export function DownloadClientHub(props: DownloadClientHubProps) {
                 <div className="flex flex-col gap-y-2">
                   <div className="flex justify-between">
                     <span>{percentStage}%</span>
-                    <span>Общий прогресс: {percentAllStages}%</span>
+                    <span>Overall progress: {percentAllStages}%</span>
                   </div>
                   <div className="relative">
                     <Progress className="h-2 absolute opacity-70" value={percentStage} />

@@ -29,6 +29,8 @@ import modrinth from '@/assets/logos/modrinth.png';
 import curseforge from '@/assets/logos/curseforge.ico';
 import { formatNumber } from '@/shared/lib/utils';
 import { ModType } from '@/shared/enums';
+import { useSettingsPlatform } from '@/shared/hooks/useSettings';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/shared/ui/tooltip';
 
 interface ProfileModDialog {
   profile?: ProfileExtendedBaseEntity;
@@ -40,8 +42,14 @@ export function AddingModsDialog({ profile, modDirection, modType }: ProfileModD
   const form = useForm<SearchFormSchemaType>();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const { ref, inView } = useInView();
+  const { data: platformSettings, isLoading: isLoadingSettings } = useSettingsPlatform();
 
-  // Используем useCallback для мемоизации функции поиска
+  // Check if CurseForge API key exists
+  const hasCurseForgeKey = !!platformSettings?.curseForgeKey;
+  const isCurseForge = modType === ModType.CURSE_FORGE;
+  const isButtonDisabled = isCurseForge && !hasCurseForgeKey;
+
+  // UseCallback to memoize the search function
   const handleSearch = useCallback(
     debounce((query: string) => {
       setSearchQuery(query);
@@ -57,14 +65,14 @@ export function AddingModsDialog({ profile, modDirection, modType }: ProfileModD
     refetch,
   } = useSearchMods(profile?.profileName ?? '', searchQuery, modType);
 
-  // Эффект для автоматического поиска при изменении searchQuery
+  // Effect for automatic search when changing searchQuery
   useEffect(() => {
     if (searchQuery) {
       refetch();
     }
   }, [searchQuery, refetch]);
 
-  // Эффект для пагинации
+  // Effect for pagination
   useEffect(() => {
     if (inView) {
       fetchNextPage();
@@ -75,64 +83,87 @@ export function AddingModsDialog({ profile, modDirection, modType }: ProfileModD
     handleSearch(content.name);
   };
 
-  // Добавляем обработчик изменений инпута для живого поиска
+  // Add an input change handler for live search
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleSearch(e.target.value);
   };
 
   return (
     <Drawer>
-      <DrawerTrigger className="flex items-start">
-        <Button variant="secondary" className="w-max gap-2">
-          {modType === 1 ? (
-            <Image src={modrinth} alt="Modrinth" className="w-4 h-4" />
-          ) : (
-            <Image src={curseforge} alt="Curseforge" className="w-4 h-4" />
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div>
+              <DrawerTrigger
+                className="cursor-pointer inline-flex items-center justify-center whitespace-nowrap
+                rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none
+                focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none
+                disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 w-max"
+                disabled={isButtonDisabled}
+              >
+                <Button variant="secondary" className="w-max gap-2" disabled={isButtonDisabled}>
+                  {modType === ModType.MODRINTH ? (
+                    <Image src={modrinth} alt="Modrinth" className="w-4 h-4" />
+                  ) : (
+                    <Image src={curseforge} alt="Curseforge" className="w-4 h-4" />
+                  )}
+                  Install
+                  <PlusIcon width={16} height={16} />
+                </Button>
+              </DrawerTrigger>
+            </div>
+          </TooltipTrigger>
+          {isButtonDisabled && (
+            <TooltipContent>
+              <p>CurseForge API key is required. Please add it in Settings.</p>
+            </TooltipContent>
           )}
-          Добавить
-          <PlusIcon width={16} height={16} />
-        </Button>
-      </DrawerTrigger>
+        </Tooltip>
+      </TooltipProvider>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle className="gap-2 flex items-center flex-wrap">
-            Мастер добавления модификаций
-            <Badge className="cursor-pointer text-sm bg-blue-500 text-white hover:bg-opacity-100 hover:bg-blue-500">
-              {modDirection}
-            </Badge>
-            <Badge className="cursor-pointer h-7 text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
-              {modType === 1 ? (
-                <>
-                  <Image src={modrinth} alt="Modrinth" className="w-4 h-4 mr-2" />
-                  Modrinth
-                </>
-              ) : (
-                <>
-                  <Image src={curseforge} alt="Curseforge" className="w-4 h-4 mr-2" />
-                  CurseForge
-                </>
-              )}
-            </Badge>
-            <Badge className="cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
-              Minecraft: {profile?.minecraftVersion}
-            </Badge>
-            <Badge className="cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
-              Загрузчик: {profile?.launchVersion}
-            </Badge>
-            <Badge className="cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
-              Фильтр: Mods
-            </Badge>
+          <DrawerTitle className="flex flex-col md:flex-row md:flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              Mods Installation Wizard
+              <Badge className="cursor-pointer text-sm bg-blue-500 text-white hover:bg-opacity-100 hover:bg-blue-500">
+                {modDirection}
+              </Badge>
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Badge className="cursor-pointer h-7 text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
+                {modType === 1 ? (
+                  <>
+                    <Image src={modrinth} alt="Modrinth" className="w-4 h-4 mr-2" />
+                    Modrinth
+                  </>
+                ) : (
+                  <>
+                    <Image src={curseforge} alt="Curseforge" className="w-4 h-4 mr-2" />
+                    CurseForge
+                  </>
+                )}
+              </Badge>
+              <Badge className="cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
+                Minecraft: {profile?.minecraftVersion}
+              </Badge>
+              <Badge className="cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
+                Loader: {profile?.launchVersion}
+              </Badge>
+              <Badge className="cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
+                Filter: Mods
+              </Badge>
+            </div>
           </DrawerTitle>
           <Form {...form}>
             <form className="flex gap-3 items-end mt-3" onSubmit={form.handleSubmit(onSubmit)}>
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="Начните искать мод"
+                    placeholder="Start looking for a mod"
                     {...form.register('name')}
                     onChange={(e) => {
-                      form.register('name').onChange(e); // Для react-hook-form
-                      handleInputChange(e); // Для живого поиска
+                      form.register('name').onChange(e); // For react-hook-form
+                      handleInputChange(e); // For live search
                     }}
                   />
                 </FormControl>
@@ -140,7 +171,7 @@ export function AddingModsDialog({ profile, modDirection, modType }: ProfileModD
 
               <Button type="submit" className="w-fit ml-auto" disabled={status === 'pending'}>
                 {status === 'pending' && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-                Поиск
+                Search
               </Button>
             </form>
           </Form>
@@ -187,15 +218,12 @@ export function AddingModsDialog({ profile, modDirection, modType }: ProfileModD
           ) : (
             <div className="flex flex-col items-center justify-center">
               <FileIcon className="w-12 h-12 text-muted-foreground mb-4" />
-              <p className="text-lg font-bold">Ничего не найдено</p>
+              <p className="text-lg font-bold">Nothing found</p>
               <p className="text-muted-foreground">
-                Попробуйте изменить запрос или проверьте параметры фильтрации.
+                Try changing the query or check the filtering options.
               </p>
             </div>
           )}
-          <DrawerClose className="flex justify-end">
-            <Button variant="outline">Отмена</Button>
-          </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

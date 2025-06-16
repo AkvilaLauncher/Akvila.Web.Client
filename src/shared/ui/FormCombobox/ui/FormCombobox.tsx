@@ -26,8 +26,8 @@ type FormComboboxParams = {
   isError?: boolean;
 };
 
-// TODO: Добавить Disabled: boolean
-// TODO: Провести рефакторинг и отказаться от Textarea
+// TODO: Add Disabled: boolean
+// TODO: Conduct refactoring and abandon Textarea
 
 export const FormCombobox = ({
   value,
@@ -40,7 +40,7 @@ export const FormCombobox = ({
   setValue,
   description,
 }: FormComboboxParams) => {
-  if (isLoading) return <Textarea text="Загрузка" />;
+  if (isLoading) return <Textarea text="Loading..." />;
   if (isError && description) return <Textarea text={description} />;
 
   return (
@@ -64,7 +64,7 @@ export const FormCombobox = ({
         <PopoverContent>
           <Command>
             <CommandInput placeholder={placeholderInputSearch} />
-            <CommandEmpty>Ничего не найдено</CommandEmpty>
+            <CommandEmpty>Nothing found</CommandEmpty>
             <CommandList>
               <CommandGroup>
                 {options.map((info) => (

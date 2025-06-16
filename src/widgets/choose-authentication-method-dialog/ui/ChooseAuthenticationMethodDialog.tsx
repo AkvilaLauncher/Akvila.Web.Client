@@ -69,25 +69,25 @@ export function ChooseAuthenticationMethodDialog() {
           disabled={isLoadingIntegration || isLoadingActiveIntegration}
         >
           <KeyRound className="mr-2" size={16} />
-          Изменить
+          Modify
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
-          <DialogTitle>Метод аутентификации</DialogTitle>
+          <DialogTitle>Authentication method</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col gap-x-8">
           <div className="flex gap-x-8 mb-8">
             <div className="flex flex-col gap-y-1 w-1/2">
-              <h6 className="text-sm font-bold">Метод</h6>
+              <h6 className="text-sm font-bold">Method</h6>
               <p className="text-sm text-gray-700 dark:text-gray-300">
-                Текущий метод аутентификации игроков в лаунчере
+                Current auth method for players in the launcher
               </p>
             </div>
             <div className="flex flex-col w-1/2">
               <Select defaultValue={authenticationTab} onValueChange={onAuthenticationTabToggle}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Выберите метод аутентификации" />
+                  <SelectValue placeholder="Select an auth method" />
                 </SelectTrigger>
                 <SelectContent>
                   {integrations &&

@@ -7,7 +7,7 @@
 }
 
 .tabs__list {
-    @apply flex-col h-auto items-start min-w-44;
+    @apply flex-col h-auto items-start w-full md:min-w-44 md:w-auto;
 }
 
 .tabs__content {

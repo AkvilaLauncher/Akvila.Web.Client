@@ -61,7 +61,7 @@ export function AddingModsSelectVersionDialog({
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger className="w-max mt-auto">
         <Button variant="secondary" className="w-max gap-2">
-          Выбрать
+          Download
         </Button>
       </DrawerTrigger>
       <DrawerContent>
@@ -75,7 +75,7 @@ export function AddingModsSelectVersionDialog({
             </Avatar>
             {modData?.name}
             <Separator orientation="vertical" />
-            <span className="text-muted-foreground">Выберите версию</span>
+            <span className="text-muted-foreground">Select a version</span>
           </DrawerTitle>
         </DrawerHeader>
         <DrawerFooter className="h-[400px] md:h-[650px] overflow-y-auto">
@@ -85,42 +85,46 @@ export function AddingModsSelectVersionDialog({
                 <div className="flex gap-4">
                   <div className="flex flex-col">
                     <h3 className="flex items-center font-bold text-sm gap-2">{mod.versionName}</h3>
-                    <div className="flex flex-wrap md:flex-row gap-2 items-center mt-3">
-                      <Button
-                        className="w-max gap-2"
-                        variant="secondary"
-                        onClick={() => loadFilesByUrl(mod.files)}
-                      >
-                        {loadModsMutate.isPending && (
-                          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-                        )}
-                        <ArrowDownIcon />
-                        Установить
-                      </Button>
+                    <div className="flex flex-col md:flex-row gap-2 items-start md:items-center mt-3">
+                      <div className="flex items-center gap-2">
+                        <Button
+                          className="w-max gap-2"
+                          variant="secondary"
+                          onClick={() => loadFilesByUrl(mod.files)}
+                        >
+                          {loadModsMutate.isPending && (
+                            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                          )}
+                          <ArrowDownIcon />
+                          Download
+                        </Button>
 
-                      <p className="text-muted-foreground">{timeAgo(mod.datePublished)}</p>
-                      <Separator className="h-8" orientation="vertical" />
+                        <p className="text-muted-foreground">{timeAgo(mod.datePublished)}</p>
+                        <Separator className="h-8 hidden md:block" orientation="vertical" />
+                      </div>
 
-                      <Badge className="gap-1 cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
-                        <DownloadIcon width={16} height={16} />
-                        {formatNumber(mod.downloads)}
-                        <span>Загрузок</span>
-                      </Badge>
+                      <div className="flex flex-wrap gap-2 items-center mt-2 md:mt-0">
+                        <Badge className="gap-1 cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
+                          <DownloadIcon width={16} height={16} />
+                          {formatNumber(mod.downloads)}
+                          <span>Downloads</span>
+                        </Badge>
 
-                      <Badge className="gap-1 cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
-                        <FilesIcon width={16} height={16} />
-                        {formatNumber(mod.files.length)}
-                        <span>Файл (ов)</span>
-                      </Badge>
+                        <Badge className="gap-1 cursor-pointer text-sm bg-white bg-opacity-10 text-white text-opacity-90 hover:bg-opacity-100 hover:bg-white hover:text-black">
+                          <FilesIcon width={16} height={16} />
+                          {formatNumber(mod.files.length)}
+                          <span>Files</span>
+                        </Badge>
+                      </div>
 
                       {!!mod.dependencies.length && (
-                        <>
+                        <div className="mt-2 md:mt-0 md:inline-block">
                           <ModsDependencyTooltip
                             profile={profile}
                             modType={modData?.type ?? ModType.MODRINTH}
                             dependencies={mod.dependencies}
                           />
-                        </>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -130,15 +134,12 @@ export function AddingModsSelectVersionDialog({
           ) : (
             <div className="flex flex-col items-center justify-center">
               <FileIcon className="w-12 h-12 text-muted-foreground mb-4" />
-              <p className="text-lg font-bold">Ничего не найдено</p>
+              <p className="text-lg font-bold">Nothing found</p>
               <p className="text-muted-foreground">
-                Попробуйте изменить запрос или проверьте параметры фильтрации.
+                Try changing the query or check the filtering options.
               </p>
             </div>
           )}
-          <DrawerClose className="flex justify-end">
-            <Button variant="outline">Отмена</Button>
-          </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

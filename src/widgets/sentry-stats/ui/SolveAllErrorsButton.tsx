@@ -22,19 +22,20 @@ export const SolveAllErrorsButton = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <div className="flex items-start gap-x-2">
-          <Button variant="outline">Пометить все ошибки решенными</Button>
+          <Button variant="outline">Mark all errors as solved</Button>
         </div>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            Все ошибки будут помечены решенными и будут безвозвратно удалены из истории и графиков.
+            All errors will be marked resolved and will be irrevocably deleted from history and
+            charts.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Отмена</AlertDialogCancel>
-          <AlertDialogAction onClick={SolveAllErrors}>Продолжить</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={SolveAllErrors}>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

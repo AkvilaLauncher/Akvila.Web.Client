@@ -24,7 +24,7 @@ export function DataTableToolbar<TData>({
         disabled={!Object.keys(rowSelection).length}
       >
         <MixerHorizontalIcon className="mr-2 h-4 w-4" />
-        Управление выбранными профилями
+        Managing selected profiles
       </Button>
     </div>
   );

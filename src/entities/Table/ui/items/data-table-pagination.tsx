@@ -17,12 +17,12 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
   return (
     <div className="flex items-center justify-between px-2">
       <div className="flex-1 text-sm text-muted-foreground mr-auto">
-        {table.getFilteredSelectedRowModel().rows.length} выбранных из{' '}
-        {table.getFilteredRowModel().rows.length} строк
+        {table.getFilteredSelectedRowModel().rows.length} rows selected from{' '}
+        {table.getFilteredRowModel().rows.length}
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Строк на странице</p>
+          <p className="text-sm font-medium">Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => {
@@ -42,7 +42,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
           </Select>
         </div>
         <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-          {table.getState().pagination.pageIndex + 1} из {table.getPageCount()}
+          {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </div>
         <div className="flex items-center space-x-2">
           <Button
@@ -51,7 +51,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
-            <span className="sr-only">На первую страницу</span>
+            <span className="sr-only">To first page</span>
             <DoubleArrowLeftIcon className="h-4 w-4" />
           </Button>
           <Button
@@ -60,7 +60,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            <span className="sr-only">На предыдущую страницу</span>
+            <span className="sr-only">To previous page</span>
             <ChevronLeftIcon className="h-4 w-4" />
           </Button>
           <Button
@@ -69,7 +69,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            <span className="sr-only">На следующую страницу</span>
+            <span className="sr-only">To next page</span>
             <ChevronRightIcon className="h-4 w-4" />
           </Button>
           <Button
@@ -78,7 +78,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
-            <span className="sr-only">На последнюю страницу</span>
+            <span className="sr-only">To last page</span>
             <DoubleArrowRightIcon className="h-4 w-4" />
           </Button>
         </div>

@@ -52,9 +52,9 @@ export function AuthenticationFormAzuriom({ className, onOpenChange, ...props }:
       <Form {...form}>
         <form className="flex flex-col space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem>
-            <FormLabel>Введите ссылку на Ваш сайт</FormLabel>
+            <FormLabel>Enter a link to your website</FormLabel>
             <FormControl>
-              <Input placeholder="Введите ссылку на Ваш сайт" {...form.register('endpoint')} />
+              <Input placeholder="Enter a link to your website" {...form.register('endpoint')} />
             </FormControl>
             {form.formState.errors.endpoint && (
               <FormMessage>{form.formState.errors.endpoint.message}</FormMessage>
@@ -62,14 +62,14 @@ export function AuthenticationFormAzuriom({ className, onOpenChange, ...props }:
 
             <Alert variant="warning">
               <ExclamationTriangleIcon className="h-4 w-4" />
-              <AlertTitle>Внимание!</AlertTitle>
+              <AlertTitle>Warning!</AlertTitle>
               <AlertDescription>
-                в Azuriom есть проблема, которая не позволит заходить другим людям на ваши сервера!
+                Azuriom has a problem that will prevent other people from entering your servers!
                 <br />
                 <a href="https://gml-launcher.github.io/Gml.Docs/gml-auth-azuriom.html">
-                  <strong className="underline">Прочитайте эту статью</strong>
+                  <strong className="underline">Read this article </strong>
                 </a>
-                , чтобы узнать подробности.
+                to learn more.
               </AlertDescription>
             </Alert>
           </FormItem>
@@ -80,7 +80,7 @@ export function AuthenticationFormAzuriom({ className, onOpenChange, ...props }:
             disabled={isPending || !form.formState.isDirty}
           >
             {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-            Сохранить
+            Save
           </Button>
         </form>
       </Form>

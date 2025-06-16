@@ -16,13 +16,13 @@ import { timeAgo } from '@/shared/lib/getFormatDate/getFormatDate';
 
 enum ColumnHeader {
   ICON = '',
-  NAME = 'Игрок',
-  SIGN_IN = 'Авторизаций',
-  SESSION_END_DATE = 'Дата завершения сессии',
+  NAME = 'Player',
+  SIGN_IN = 'Logins',
+  SESSION_END_DATE = 'Session end date',
   UUID = 'UUID',
-  BANNED = 'Заблокирован',
-  IP_ADDRESS = 'IP Адрес',
-  ACTIONS = 'Действия',
+  BANNED = 'Banned',
+  IP_ADDRESS = 'IP Address',
+  ACTIONS = 'Actions',
 }
 
 export const columnsHelper = createColumnHelper<PlayerBaseEntity>();
@@ -77,12 +77,12 @@ export const useColumns = () => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title={ColumnHeader.SESSION_END_DATE} />
       ),
-      cell: ({ getValue }) => format(getValue(), 'dd.MM.yyyy в HH:mm:ss'),
+      cell: ({ getValue }) => format(getValue(), 'dd.MM.yyyy HH:mm:ss'),
     }),
     columnsHelper.accessor('isBanned', {
       size: 100,
       header: ({ column }) => <DataTableColumnHeader column={column} title={ColumnHeader.BANNED} />,
-      cell: ({ getValue }) => (getValue() ? 'Да' : 'Нет'),
+      cell: ({ getValue }) => (getValue() ? 'Yes' : 'No'),
     }),
     columnsHelper.display({
       id: 'address',
@@ -135,7 +135,7 @@ export const useColumns = () => {
                 onClick={() => pardonUser(row.original.uuid)}
               >
                 <GavelIcon size="12" />
-                Разбанить
+                Unban
               </Button>
             ) : (
               <Button
@@ -144,7 +144,7 @@ export const useColumns = () => {
                 onClick={() => banUser(row.original.uuid)}
               >
                 <GavelIcon size="12" />
-                Забанить
+                Ban
               </Button>
             )}
 
@@ -154,7 +154,7 @@ export const useColumns = () => {
               onClick={() => removeUser(row.original.uuid)}
             >
               <UserXIcon size="12" />
-              Удалить
+              Delete
             </Button>
           </div>
         );

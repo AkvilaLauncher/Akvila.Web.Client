@@ -27,11 +27,11 @@ export const NotificationCard = ({ card }: ProfileCardParams) => {
         className="w-fit"
         onClick={async () => {
           await navigator.clipboard.writeText(card.details ? card.details : card.message);
-          toast.success('Текст успешно скопирован');
+          toast.success('Text successfully copied');
         }}
       >
         <Copy className="h-3 w-3 mr-1" />
-        Копировать
+        Copy
       </Button>
     </Card>
   );

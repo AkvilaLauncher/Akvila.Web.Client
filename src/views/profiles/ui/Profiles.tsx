@@ -8,12 +8,12 @@ export const ProfilesPage = () => {
   return (
     <>
       <Breadcrumbs
-        current={'Профили'}
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        current={'Profiles'}
+        breadcrumbs={[{ value: 'Home', path: DASHBOARD_PAGES.HOME }]}
       />
       <div className="flex flex-col items-start py-4">
         <div className="flex justify-between w-full">
-          <h1 className="text-xl font-bold mb-8">Профили</h1>
+          <h1 className="text-xl font-bold mb-8">Profiles</h1>
           <CreateProfileDialog />
         </div>
         <div className="flex-col gap-y-6 w-full hidden md:flex">

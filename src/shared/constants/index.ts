@@ -7,10 +7,8 @@ export const HREF_GET_WEBMCR_RELOADED_AUTH_PHP =
 export const HREF_GET_WORDPRESS_AUTH_PHP =
   'https://github.com/GamerVII-NET/Gml.Modules.Auth/tree/master/WordPress';
 export const HREF_DOCUMENTATION_CUSTOM_ENDPOINT =
-  'https://gml-launcher.github.io/Gml.Docs/integrations-auth-custom.html';
-export const HREF_DISCORD = 'https://discord.com/invite/b5xgqfWgNt';
-export const HREF_RECLOUD_PRO =
-  'https://recloud.tb.ru/#:~:text=Gml%20Лаунчер%20%7C-,Тариф%20Pro,-(месяц)';
+  'https://gml-launcher.github.io/Gml.Docs/integrations-auth-custom.html'; // TODO: replace with Akvila documentation
+export const HREF_DISCORD = 'https://discord.com/invite/b5xgqfWgNt'; //TODO: replace with Akvila Discord server
 
 export const DEFAULT_TIMEOUT = 30000;
 export const RETRY_DELAY_MAX = 10;

@@ -22,7 +22,7 @@ export const useAddingFilesWhitelist = () => {
     mutationKey: whitelistKeys.addingFilesWhitelist,
     mutationFn: (data: TPostWhitelistFileRequest) => whitelistService.appendFiles(data),
     onSuccess: (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
       window.location.reload();
@@ -38,7 +38,7 @@ export const useDeleteFilesWhitelist = () => {
     mutationKey: whitelistKeys.deleteFilesWhitelist,
     mutationFn: (body: TDeleteWhitelistFileRequest) => whitelistService.deleteFiles(body),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
       window.location.reload();
@@ -54,7 +54,7 @@ export const useAddingFolderWhitelist = () => {
     mutationKey: whitelistKeys.addingFoldersWhitelist,
     mutationFn: (data: TPostWhitelistFolderRequest) => whitelistService.appendFolder(data),
     onSuccess: (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
       window.location.reload();
@@ -70,7 +70,7 @@ export const useDeleteFolderWhitelist = () => {
     mutationKey: whitelistKeys.deleteFoldersWhitelist,
     mutationFn: (body: TDeleteWhitelistFolderRequest) => whitelistService.deleteFolder(body),
     onSuccess: async (data) => {
-      toast.success('Успешно', {
+      toast.success('Successful', {
         description: data.data.message,
       });
       window.location.reload();

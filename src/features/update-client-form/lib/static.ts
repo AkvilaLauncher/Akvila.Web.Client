@@ -3,19 +3,19 @@ import { z } from 'zod';
 export const ClientUpdateSchema = z.object({
   launcherBuild: z
     .string()
-    .min(1, { message: 'Вы не заполнили поле' })
+    .min(1, { message: "You haven't filled in the field" })
     .transform((v) => v.trim()),
   version: z
     .string()
-    .min(1, { message: 'Вы не заполнили поле' })
+    .min(1, { message: "You haven't filled in the field" })
     .transform((v) => v.trim()),
   title: z
     .string()
-    .min(1, { message: 'Вы не заполнили поле' })
+    .min(1, { message: "You haven't filled in the field" })
     .transform((v) => v.trim()),
   description: z
     .string()
-    .min(1, { message: 'Вы не заполнили поле' })
+    .min(1, { message: "You haven't filled in the field" })
     .transform((v) => v.trim()),
 });
 

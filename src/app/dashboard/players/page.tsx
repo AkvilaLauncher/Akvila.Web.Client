@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { PlayersPage } from '@/views/players';
 
 export const metadata: Metadata = {
-  title: 'Игроки',
+  title: 'Playes',
 };
 
 const Page = () => {

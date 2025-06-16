@@ -5,8 +5,8 @@ export const SentryLoading = () => {
   return (
     <>
       <Breadcrumbs
-        current={'Ошибки'}
-        breadcrumbs={[{ value: 'Главная', path: DASHBOARD_PAGES.HOME }]}
+        current={'Errors'}
+        breadcrumbs={[{ value: 'Home', path: DASHBOARD_PAGES.HOME }]}
       />
       Loading...
     </>

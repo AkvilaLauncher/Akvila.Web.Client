@@ -18,7 +18,14 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shared/ui/form';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/shared/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from '@/shared/ui/card';
 import { Icons } from '@/shared/ui/icons';
 import { Input } from '@/shared/ui/input';
 import { Separator } from '@/shared/ui/separator';
@@ -55,19 +62,19 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
   return (
     <div className={cn('grid gap-6', className)} {...props}>
       <div className="flex flex-col gap-2">
-        <h2 className="text-lg font-semibold">Настройка интеграции с Discord</h2>
+        <h2 className="text-lg font-semibold">Setting up Discord integration</h2>
         <p className="text-sm text-muted-foreground">
-          Подключите ваш Discord сервер для отображения активности пользователей в Rich Presence.
+          Connect your Discord server to display user activity in Rich Presence.
         </p>
       </div>
 
       <Alert className="bg-blue-50 border-blue-200 dark:bg-blue-950 dark:border-blue-900">
         <InfoIcon className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-        <AlertDescription className="text-sm text-blue-600 dark:text-blue-400">
-          Для настройки интеграции вам потребуется создать приложение в{" "}
-          <a 
-            href="https://discord.com/developers/applications" 
-            target="_blank" 
+        <AlertDescription className="text-sm mt-1 text-blue-600 dark:text-blue-400">
+          To set up the integration, you will need to create an application in{' '}
+          <a
+            href="https://discord.com/developers/applications"
+            target="_blank"
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4 hover:text-blue-700 dark:hover:text-blue-300"
           >
@@ -80,11 +87,11 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="setup">
             <LinkIcon className="mr-2 h-4 w-4" />
-            Настройка
+            Settings
           </TabsTrigger>
           <TabsTrigger value="preview">
             <ImageIcon className="mr-2 h-4 w-4" />
-            Предпросмотр
+            Preview
           </TabsTrigger>
         </TabsList>
 
@@ -93,9 +100,9 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
             <form className="flex flex-col space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
               <Card className="border-l-4 border-l-primary">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">Основные настройки</CardTitle>
+                  <CardTitle className="text-base">Main settings</CardTitle>
                   <CardDescription>
-                    Настройте основные параметры для подключения к Discord
+                    Configure the basic settings to connect to Discord
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -108,11 +115,15 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                         <FormControl>
                           <div className="relative">
                             <LinkIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                            <Input className="pl-10" placeholder="Введите Client ID вашего Discord приложения" {...field} />
+                            <Input
+                              className="pl-10"
+                              placeholder="Enter the Client ID of your Discord application"
+                              {...field}
+                            />
                           </div>
                         </FormControl>
                         <FormDescription>
-                          ID вашего приложения из Discord Developer Portal
+                          Your application ID from the Discord Developer Portal
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -128,11 +139,15 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                         <FormControl>
                           <div className="relative">
                             <TextIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                            <Input className="pl-10" placeholder="Например: Играет на сервере" {...field} />
+                            <Input
+                              className="pl-10"
+                              placeholder="For example: Playing on the server"
+                              {...field}
+                            />
                           </div>
                         </FormControl>
                         <FormDescription>
-                          Текст, который будет отображаться в статусе пользователя
+                          Text to be displayed in the user&apos;s status
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -143,9 +158,9 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
 
               <Card className="border-l-4 border-l-primary">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">Настройки изображений</CardTitle>
+                  <CardTitle className="text-base">Image settings</CardTitle>
                   <CardDescription>
-                    Настройте изображения, которые будут отображаться в Rich Presence
+                    Customize the images that will be displayed in Rich Presence
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -159,11 +174,15 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                           <FormControl>
                             <div className="relative">
                               <ImageIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                              <Input className="pl-10" placeholder="Ключ большого изображения" {...field} />
+                              <Input
+                                className="pl-10"
+                                placeholder="The key of the big picture"
+                                {...field}
+                              />
                             </div>
                           </FormControl>
                           <FormDescription>
-                            Ключ для большого изображения в Rich Presence
+                            The key to the big picture in Rich Presence
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -179,11 +198,15 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                           <FormControl>
                             <div className="relative">
                               <TextIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                              <Input className="pl-10" placeholder="Текст при наведении на большое изображение" {...field} />
+                              <Input
+                                className="pl-10"
+                                placeholder="Text when hovering over a large image"
+                                {...field}
+                              />
                             </div>
                           </FormControl>
                           <FormDescription>
-                            Текст, который появляется при наведении на большое изображение
+                            Text that appears when you hover over a large image
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -203,11 +226,15 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                           <FormControl>
                             <div className="relative">
                               <ImageIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                              <Input className="pl-10" placeholder="Ключ маленького изображения" {...field} />
+                              <Input
+                                className="pl-10"
+                                placeholder="The key of the small image"
+                                {...field}
+                              />
                             </div>
                           </FormControl>
                           <FormDescription>
-                            Ключ для маленького изображения в Rich Presence
+                            Key for the small image in Rich Presence
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -223,11 +250,15 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                           <FormControl>
                             <div className="relative">
                               <TextIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                              <Input className="pl-10" placeholder="Текст при наведении на маленькое изображение" {...field} />
+                              <Input
+                                className="pl-10"
+                                placeholder="Text when hovering over a small image"
+                                {...field}
+                              />
                             </div>
                           </FormControl>
                           <FormDescription>
-                            Текст, который появляется при наведении на маленькое изображение
+                            Text that appears when you hover over a small image
                           </FormDescription>
                           <FormMessage />
                         </FormItem>
@@ -236,12 +267,9 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-end pt-2">
-                  <Button
-                    type="submit"
-                    disabled={isPending || !form.formState.isDirty}
-                  >
+                  <Button type="submit" disabled={isPending || !form.formState.isDirty}>
                     {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-                    Сохранить настройки
+                    Save settings
                   </Button>
                 </CardFooter>
               </Card>
@@ -252,42 +280,50 @@ export function ConnectDiscordForm({ className, onOpenChange, ...props }: SignIn
         <TabsContent value="preview" className="pt-4">
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Предпросмотр Rich Presence</CardTitle>
-              <CardDescription>
-                Так будет выглядеть ваш статус в Discord
-              </CardDescription>
+              <CardTitle className="text-base">Rich Presence preview</CardTitle>
+              <CardDescription>This is what your Discord status will look like</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center">
-                <Image 
-                  src={discordHint} 
-                  alt="discord-hint" 
+                <Image //TODO: Replace with actual preview component
+                  src={discordHint}
+                  alt="discord-hint"
                   className="rounded-md border shadow-sm"
                 />
                 <div className="mt-6 grid grid-cols-1 gap-2 text-sm">
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-center font-bold">1.</div>
-                    <div className="col-span-11">Название бота (Присваивается при создании Discord бота)</div>
+                    <div className="col-span-11">
+                      Bot name (Assigned when creating a Discord bot)
+                    </div>
                   </div>
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-center font-bold">2.</div>
-                    <div className="col-span-11">Поле details (настраивается в форме)</div>
+                    <div className="col-span-11">Details field (customizable in the form)</div>
                   </div>
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-center font-bold">3.</div>
-                    <div className="col-span-11">Stage (Управляется лаунчером автоматически)</div>
+                    <div className="col-span-11">
+                      Stage (Controlled automatically by the Launcher)
+                    </div>
                   </div>
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-center font-bold">4.</div>
-                    <div className="col-span-11">Time (Управляется лаунчером автоматически)</div>
+                    <div className="col-span-11">
+                      Time (Controlled automatically by the Launcher)
+                    </div>
                   </div>
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-center font-bold">5.</div>
-                    <div className="col-span-11">largeImageText (Текст при наведении на большое изображение)</div>
+                    <div className="col-span-11">
+                      largeImageText (Text when hovering over a large image)
+                    </div>
                   </div>
                   <div className="grid grid-cols-12 items-center">
                     <div className="col-span-1 text-center font-bold">6.</div>
-                    <div className="col-span-11">smallImageText (Текст при наведении на маленькое изображение)</div>
+                    <div className="col-span-11">
+                      smallImageText (Text when hovering over a small image)
+                    </div>
                   </div>
                 </div>
               </div>

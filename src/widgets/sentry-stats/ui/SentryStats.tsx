@@ -9,14 +9,14 @@ import { SolveAllErrorsButton } from '@/widgets/sentry-stats/ui/SolveAllErrorsBu
 
 const chartConfig = {
   views: {
-    label: 'Ошибок',
+    label: 'Errors',
   },
   launcher: {
-    label: 'Лаунчер',
+    label: 'Launcher',
     color: 'hsl(var(--chart-1))',
   },
   backend: {
-    label: 'Панель Gml',
+    label: 'Dashboard',
     color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig;
@@ -31,9 +31,9 @@ export const SentryStats = ({ chartData, summaryData }: SentryStatsProps) => {
 
   const getPercent = (num: number) => {
     const roundedNum = Math.round(num);
-    if (roundedNum === 0) return `Не изменилось`;
-    if (roundedNum > 0) return `На +${roundedNum}% больше обычного`;
-    return `На ${roundedNum}% меньше обычного`;
+    if (roundedNum === 0) return `Hasn't changed`;
+    if (roundedNum > 0) return `+${roundedNum}% more than usual.`;
+    return `${roundedNum}% less than usual.`;
   };
 
   const total = useMemo(() => {
@@ -50,7 +50,7 @@ export const SentryStats = ({ chartData, summaryData }: SentryStatsProps) => {
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
         <Card x-chunk="dashboard-01-chunk-0">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Количество ошибок</CardTitle>
+            <CardTitle className="text-sm font-medium">Number of errors</CardTitle>
             <BarChart2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -60,7 +60,7 @@ export const SentryStats = ({ chartData, summaryData }: SentryStatsProps) => {
         </Card>
         <Card x-chunk="dashboard-01-chunk-1">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">В этом месяце</CardTitle>
+            <CardTitle className="text-sm font-medium">This month</CardTitle>
             <BarChart2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -72,7 +72,7 @@ export const SentryStats = ({ chartData, summaryData }: SentryStatsProps) => {
         </Card>
         <Card x-chunk="dashboard-01-chunk-1">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">За сегодня</CardTitle>
+            <CardTitle className="text-sm font-medium">Today</CardTitle>
             <BarChart2 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -84,7 +84,7 @@ export const SentryStats = ({ chartData, summaryData }: SentryStatsProps) => {
         </Card>
         <Card x-chunk="dashboard-01-chunk-2">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Исправлено</CardTitle>
+            <CardTitle className="text-sm font-medium">Fixed</CardTitle>
             <Bug className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -100,8 +100,10 @@ export const SentryStats = ({ chartData, summaryData }: SentryStatsProps) => {
       <Card>
         <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-            <CardTitle>Статистика ошибок</CardTitle>
-            <CardDescription>Демонстрация количество ошибок за последние 3 месяца</CardDescription>
+            <CardTitle>Error statistics</CardTitle>
+            <CardDescription>
+              Demonstration of the number of errors for the last 3 months
+            </CardDescription>
           </div>
           <div className="flex">
             {['launcher', 'backend'].map((key) => {

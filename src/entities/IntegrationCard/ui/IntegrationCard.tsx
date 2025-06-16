@@ -25,7 +25,7 @@ export const IntegrationCard = (props: IntegrationCardProps) => {
         dialog
       ) : (
         <Button size="sm" variant="outline" className="w-fit" disabled>
-          Отключено
+          Disabled
         </Button>
       )}
     </Card>

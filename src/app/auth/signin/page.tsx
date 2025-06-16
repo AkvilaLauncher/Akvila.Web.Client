@@ -14,23 +14,23 @@ export default function Page() {
         <div className={classes['login__main-content']}>
           <div className={classes.login__form}>
             <div className={classes.login__details}>
-              <Image src={logo} className={classes.login__logo} alt="Gml Frontend" />
-              <h1 className={classes.login__title}>Авторизация</h1>
+              <Image src={logo} className={classes.login__logo} alt="Akvila Frontend" />
+              <h1 className={classes.login__title}>Authorization</h1>
               <p className={classes.login__subtitle}>
-                Введите свой логин и пароль ниже, чтобы войти в свою учетную запись
+                Enter your username and password below to log in to your account
               </p>
             </div>
             <SignInForm />
             <div className={classes.login__registration}>
-              Нет аккаунта?{' '}
+              No account?{' '}
               <Link href={AUTH_PAGES.SIGN_UP} className={classes.login__link}>
-                Регистрация
+                Registration
               </Link>
             </div>
           </div>
         </div>
         <div className={classes.login__banner}>
-          <Image src={logo} className={classes['login__banner-image']} alt="Gml Frontend" />
+          <Image src={logo} className={classes['login__banner-image']} alt="Akvila Frontend" />
         </div>
       </div>
     </>

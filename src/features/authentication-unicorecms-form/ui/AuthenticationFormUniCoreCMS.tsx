@@ -54,9 +54,9 @@ export function AuthenticationFormUniCoreCMS({
       <Form {...form}>
         <form className="flex flex-col space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormItem>
-            <FormLabel>Введите ссылку на Ваш Backend</FormLabel>
+            <FormLabel>Enter a link to your Backend</FormLabel>
             <FormControl>
-              <Input placeholder="Введите ссылку на Ваш Backend" {...form.register('endpoint')} />
+              <Input placeholder="Enter a link to your Backend" {...form.register('endpoint')} />
             </FormControl>
             {form.formState.errors.endpoint && (
               <FormMessage>{form.formState.errors.endpoint.message}</FormMessage>
@@ -69,7 +69,7 @@ export function AuthenticationFormUniCoreCMS({
             disabled={isPending || !form.formState.isDirty}
           >
             {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-            Сохранить
+            Save
           </Button>
         </form>
       </Form>

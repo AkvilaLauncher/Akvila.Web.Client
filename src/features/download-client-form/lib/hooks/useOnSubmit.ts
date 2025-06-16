@@ -18,7 +18,7 @@ export const useOnSubmit = ({ connectionHub, state }: UseOnSubmitParams) => {
       state.setIsDownload(() => true);
       connectionHub?.invoke('Download', data.branch, data.host, data.folder).then(() => {});
     } catch (error: unknown) {
-      toast.error('Ошибка', {
+      toast.error('Error', {
         description: JSON.stringify(error),
       });
     } finally {

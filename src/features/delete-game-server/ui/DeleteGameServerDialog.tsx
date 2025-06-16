@@ -32,22 +32,22 @@ export const DeleteGameServerDialog = ({
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <Button variant="ghost" size="icon">
+        <Button variant="destructive" size="icon">
           <Trash2Icon className="h-5 w-5" />
-          <span className="sr-only">Удалить сервер</span>
+          <span className="sr-only">Delete server</span>
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Удаление сервера</AlertDialogTitle>
+          <AlertDialogTitle>Server deletion</AlertDialogTitle>
           <AlertDialogDescription>
-            {`Вы уверены что хотите безвозвратно удалить сервер "${serverName}" в профиле "${profileName}"?`}
+            {`Are you sure you want to permanently delete server "${serverName}" in profile "${profileName}"?`}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel disabled={isPending}>Отмена</AlertDialogCancel>
+          <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
           <AlertDialogAction disabled={isPending} onClick={onSubmit}>
-            Удалить
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

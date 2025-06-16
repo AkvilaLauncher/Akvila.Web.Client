@@ -34,16 +34,16 @@ export const InputFile = forwardRef<HTMLInputElement, InputFileProps>(
         <UploadCloud size={24} />
       </div>
       <p className="text-xs text-center leading-6">
-        <span className="underline">Нажмите, чтобы загрузить</span>, или перетащите изображение
+        <span className="underline">Click to upload</span>, or drag and drop the image
       </p>
       <input type="file" id={id} className="hidden" ref={ref} {...props} />
       {fileTypes && (
         <>
           {fileTypes.length === 1 && (
-            <p className="text-xs mt-2">Доступный формат: {fileTypes[0]}</p>
+            <p className="text-xs mt-2">Available format: {fileTypes[0]}</p>
           )}
           {fileTypes.length > 1 && (
-            <p className="text-xs mt-2">Доступные форматы: {fileTypes.join(', ')}</p>
+            <p className="text-xs mt-2">Available formats: {fileTypes.join(', ')}</p>
           )}
         </>
       )}

@@ -31,8 +31,8 @@ function Filter({ column }: { column: Column<ProfileFolderBaseEntity, unknown> }
 
   return (
     <Input
-      className="mb-4"
-      placeholder={`Поиск...`}
+      className="h-8 min-w-30"
+      placeholder="Search..."
       type="text"
       value={(columnFilterValue ?? '') as string}
       onChange={(value) => column.setFilterValue(value.target.value)}
@@ -75,20 +75,16 @@ export const FolderTable = ({
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    <div className="flex items-center justify-between gap-2">
                       {header.isPlaceholder
                         ? null
                         : flexRender(header.column.columnDef.header, header.getContext())}
-                      {header.column.getCanFilter() ? (
-                        <div>
-                          <Filter column={header.column} />
-                        </div>
-                      ) : null}
-                    </TableHead>
-                  );
-                })}
+                      {header.column.getCanFilter() ? <Filter column={header.column} /> : null}
+                    </div>
+                  </TableHead>
+                ))}
               </TableRow>
             ))}
           </TableHeader>
